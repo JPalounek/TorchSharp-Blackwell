@@ -1,6 +1,22 @@
+# ⚠️ UNOFFICIAL EXPERIMENTAL PACKAGES ⚠️
+
 # TorchSharp with CUDA 12.8 Support for NVIDIA RTX5080 (Blackwell Architecture)
 
-This fork of TorchSharp adds support for NVIDIA's RTX5080 GPUs with Blackwell architecture using CUDA 12.8 and LibTorch 2.7.0.
+## 🚨 **EXPERIMENTAL - USE AT YOUR OWN RISK** 🚨
+
+**These are unofficial, community-maintained experimental packages for early RTX 5080 Blackwell GPU testing.**
+
+❌ **NOT officially supported by:**
+- Microsoft/.NET Foundation
+- PyTorch/Meta  
+- NVIDIA
+
+✅ **Intended for:**
+- Early adopters and researchers
+- Development and testing only
+- Community experimentation with RTX 5080
+
+This experimental fork adds support for NVIDIA's RTX5080 GPUs with Blackwell architecture using CUDA 12.8 and LibTorch 2.7.0.
 
 ## New Features
 
@@ -11,38 +27,73 @@ This fork of TorchSharp adds support for NVIDIA's RTX5080 GPUs with Blackwell ar
 
 ## Installation
 
-### From NuGet (Once Published)
+### From NuGet (Experimental Packages)
 
+**For TorchSharp with RTX 5080 support:**
 ```bash
-dotnet add package TorchSharp-cuda-12.8-linux
+dotnet add package TorchSharp-blackwell-linux
 ```
+
+**For LibTorch native libraries only:**
+```bash
+dotnet add package libtorch-blackwell-linux-x64
+```
+
+⚠️ **Package Structure**: Due to NuGet's 250MB size limit, the packages are distributed across multiple fragments that are automatically downloaded and stitched together.
 
 ### Building from Source
 
-To build and use the CUDA 12.8 packages locally:
+To build the experimental CUDA 12.8 packages locally:
 
 1. Clone this repository
-2. Run the deployment script: `./deploy.sh --server your-linux-server`
-3. On the Linux server, run: `./build.sh`
-4. Use the generated packages from `nuget-output/`
+2. Run the deployment script: `./deploy.sh`
+3. Download packages: `./download_packages.sh` 
+4. Publish to NuGet: `./publish_packages.sh` (optional)
+
+**Build Process:**
+- Creates 19 NuGet packages (all under 250MB each)
+- Includes automatic fragmentation for large files
+- Total download size: ~10GB across all packages
 
 ## System Requirements
 
 - Ubuntu 22.04.5 LTS or compatible Linux distribution
 - CUDA 12.8 drivers installed
-- NVIDIA RTX5080 GPU (Blackwell architecture) or newer
-- .NET 6.0 or newer
-- Minimum 20GB free disk space for building
+- **NVIDIA RTX5080 GPU** (Blackwell architecture) or newer
+- **CUDA 12.8 drivers** (560.28+ recommended)
+- **.NET 6.0 or newer**
+- **Linux x64** (Ubuntu 20.04+, CentOS 8+, etc.)
+- **Minimum 15GB free space** for package installation
+
+## ⚠️ Critical Warnings
+
+- **🚨 EXPERIMENTAL**: Packages may be unstable or cause system issues
+- **❌ NO OFFICIAL SUPPORT**: No warranty, support, or guarantees provided
+- **🔬 RESEARCH ONLY**: Not suitable for production environments  
+- **🎯 RTX 5080 SPECIFIC**: Optimized specifically for Blackwell architecture
+- **⚡ BLEEDING EDGE**: Uses latest CUDA 12.8 - may have compatibility issues
+- **💾 LARGE DOWNLOAD**: Total 10GB+ across all package fragments
 
 ## Package Structure
 
-This implementation includes segmented packages to handle large LibTorch binaries:
+**19 Total Packages** (all under 250MB NuGet limit):
 
-- `TorchSharp-cuda-12.8-linux` - Main meta-package
-- `libtorch-cuda-12.8-linux-x64` - Core LibTorch package
-- `libtorch-cuda-12.8-linux-x64-part1` through `part8-primary` - Segmented binary packages
+### Main Packages
+- `TorchSharp-blackwell-linux` - .NET wrapper with RTX 5080 support
+- `libtorch-blackwell-linux-x64` - Head package (dependency resolver)
 
-The segmentation is necessary due to NuGet package size limits and allows for efficient distribution of the ~6GB LibTorch CUDA 12.8 runtime.
+### Fragment Packages (Auto-Downloaded)
+- **Part 1**: `libtorch-blackwell-linux-x64-part1` - Basic CUDA libraries
+- **Part 2**: `libtorch-blackwell-linux-x64-part2-primary` - CPU libraries  
+- **Part 3**: `libtorch-blackwell-linux-x64-part3-primary` + 4 fragments - CUDA linear algebra (803MB total)
+- **Part 4**: `libtorch-blackwell-linux-x64-part4-primary` + 3 fragments - CUDA BLAS (745MB total)
+- **Part 5**: `libtorch-blackwell-linux-x64-part5-primary` + 1 fragment - Main CUDA runtime (2.3GB total)
+- **Parts 6-8**: `libtorch-blackwell-linux-x64-part6/7/8-primary` - Additional CUDA libraries
+
+### Fragmentation Strategy
+- **Large files split into 200MB chunks** to meet NuGet 250MB limit
+- **Automatic reassembly** during package installation
+- **No manual intervention required** - NuGet handles stitching
 
 **Note**: The LibTorch binaries are sourced from the official PyTorch 2.7.0 Linux C++ distribution with CUDA 12.8 support, ensuring full compatibility and performance optimization for RTX 5080 GPUs.
 
