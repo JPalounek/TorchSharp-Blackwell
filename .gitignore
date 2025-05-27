@@ -273,3 +273,15 @@ packages/
 /.idea
 /test/TorchSharpTest/exportsd.py
 .vscode/settings.json
+
+# LibTorch binary files
+/pkg/libtorch-*/lib/
+/pkg/libtorch-*/bin/
+/pkg/libtorch-*/include/
+/pkg/libtorch-*/share/
+*.so
+*.so.*
+*.a
+*.dylib
+*.dll
+.claude/

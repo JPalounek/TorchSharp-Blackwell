@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk" DefaultTargets="Pack">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>libtorch-cuda-12.8-linux-x64-part3-primary</PackageId>
+    <PackageDescription>⚠️ UNOFFICIAL EXPERIMENTAL ⚠️ LibTorch CUDA 12.8 Part 3 for RTX 5080 Blackwell GPUs. Community experimental package - NOT officially supported. Development/research only.</PackageDescription>
+    <PackageTags>pytorch;libtorch;cuda;gpu;nvidia;rtx5080;blackwell;cuda128;machine-learning;deep-learning;unofficial;experimental;community</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="../common/RestitchPackage.props" Pack="true" PackagePath="buildTransitive/netstandard2.0/$(PackageId).props" />
+    <Content Include="../common/RestitchPackage.targets" Pack="true" PackagePath="buildTransitive/netstandard2.0/$(PackageId).targets" />
+    <Content Include="../empty.txt" Pack="true" PackagePath="lib/netstandard2.0/_._" />
+    <Content Include="$(RepoRoot)/THIRD-PARTY-NOTICES.txt" Pack="true" PackagePath="LICENSE-LIBTORCH.txt" />
+    
+    <!-- Part 3: Only small CUDA libraries (keep under 200MB) -->
+    <Content Include="$(RepoRoot)pkg/libtorch-cuda-12.8-linux-x64/lib/libnvrtc-c8f577df.so.12" Pack="true" PackagePath="runtimes/linux-x64/native/libnvrtc-c8f577df.so.12" />
+    <Content Include="$(RepoRoot)pkg/libtorch-cuda-12.8-linux-x64/lib/libnvrtc-builtins-c8f577df.so.12" Pack="true" PackagePath="runtimes/linux-x64/native/libnvrtc-builtins-c8f577df.so.12" />
+    <Content Include="$(RepoRoot)pkg/libtorch-cuda-12.8-linux-x64/lib/libcusolverMg-cfa11e0b.so.11" Pack="true" PackagePath="runtimes/linux-x64/native/libcusolverMg-cfa11e0b.so.11" />
+  </ItemGroup>
+</Project>

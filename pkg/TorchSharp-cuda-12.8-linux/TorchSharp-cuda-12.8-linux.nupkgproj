@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <PackageId>TorchSharp-cuda-12.8-linux</PackageId>
+    <PackageDescription>⚠️ UNOFFICIAL EXPERIMENTAL PACKAGE ⚠️ TorchSharp .NET wrapper with RTX 5080 Blackwell GPU support via CUDA 12.8. Community-maintained experimental package combining TorchSharp + LibTorch 2.7.0 for early RTX 5080 testing. NOT officially supported by .NET Foundation, PyTorch, or NVIDIA. Development/research use only.</PackageDescription>
+    <Authors>.NET Foundation and Contributors</Authors>
+    <Copyright>© .NET Foundation and Contributors</Copyright>
+    <PackageReadmeFile>BLACKWELL-README.md</PackageReadmeFile>
+    <PackageTags>TorchSharp;PyTorch;Machine Learning;Deep Learning;CUDA;GPU;NVIDIA;RTX5080;Blackwell;CUDA128;unofficial;experimental;community</PackageTags>
+    <PackageProjectUrl>https://github.com/dotnet/TorchSharp</PackageProjectUrl>
+    <EnablePackageValidation>false</EnablePackageValidation>
+    <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TorchSharp\TorchSharp.nupkgproj" />
+    <ProjectReference Include="..\libtorch-cuda-12.8-linux-x64\libtorch-cuda-12.8-linux-x64.nupkgproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\common\NormalPackage.props" Pack="true" PackagePath="buildTransitive\net6.0\$(PackageId).props" />
+    <Content Include="..\common\NormalPackage.targets" Pack="true" PackagePath="buildTransitive\net6.0\$(PackageId).targets" />
+    <Content Include="..\empty.txt" Pack="true" PackagePath="lib\net6.0\_._" />
+    <Content Include="$(RepoRoot)\THIRD-PARTY-NOTICES.txt" Pack="true" PackagePath="LICENSE-LIBTORCH.txt" />
+    <Content Include="$(RepoRoot)\LICENSE.txt" Pack="true" PackagePath="" />
+    <None Include="..\BLACKWELL-README.md" Pack="true" PackagePath="BLACKWELL-README.md" />
+  </ItemGroup>
+
+</Project>

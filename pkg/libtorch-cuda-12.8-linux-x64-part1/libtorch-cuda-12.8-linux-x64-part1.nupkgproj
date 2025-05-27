@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk" DefaultTargets="Pack">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>libtorch-cuda-12.8-linux-x64-part1</PackageId>
+    <PackageDescription>LibTorch 2.7.0 CUDA 12.8 runtime libraries for Linux x64 (Part 1) - Core Libraries. Enables NVIDIA RTX 5080 Blackwell architecture support.</PackageDescription>
+    <PackageTags>pytorch;libtorch;cuda;gpu;nvidia;rtx5080;blackwell;cuda128;machine-learning;deep-learning</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\common\NormalPackage.props" Pack="true" PackagePath="buildTransitive\netstandard2.0\$(PackageId).props" />
+    <Content Include="..\common\NormalPackage.targets" Pack="true" PackagePath="buildTransitive\netstandard2.0\$(PackageId).targets" />
+    <Content Include="..\empty.txt" Pack="true" PackagePath="lib\netstandard2.0\_._" />
+    <Content Include="$(RepoRoot)\THIRD-PARTY-NOTICES.txt" Pack="true" PackagePath="LICENSE-LIBTORCH.txt" />
+    
+    <!-- Part 1: Core Libraries -->
+    <Content Include="$(RepoRoot)pkg/libtorch-cuda-12.8-linux-x64/lib/libtorch.so" Pack="true" PackagePath="runtimes/linux-x64/native/libtorch.so" />
+    <Content Include="$(RepoRoot)pkg/libtorch-cuda-12.8-linux-x64/lib/libtorch_global_deps.so" Pack="true" PackagePath="runtimes/linux-x64/native/libtorch_global_deps.so" />
+    <Content Include="$(RepoRoot)pkg/libtorch-cuda-12.8-linux-x64/lib/libcaffe2_nvrtc.so" Pack="true" PackagePath="runtimes/linux-x64/native/libcaffe2_nvrtc.so" />
+    <Content Include="$(RepoRoot)pkg/libtorch-cuda-12.8-linux-x64/lib/libshm.so" Pack="true" PackagePath="runtimes/linux-x64/native/libshm.so" />
+    <Content Include="$(RepoRoot)pkg/libtorch-cuda-12.8-linux-x64/lib/libbackend_with_compiler.so" Pack="true" PackagePath="runtimes/linux-x64/native/libbackend_with_compiler.so" />
+    <Content Include="$(RepoRoot)pkg/libtorch-cuda-12.8-linux-x64/lib/libaoti_custom_ops.so" Pack="true" PackagePath="runtimes/linux-x64/native/libaoti_custom_ops.so" />
+    <Content Include="$(RepoRoot)pkg/libtorch-cuda-12.8-linux-x64/lib/libnnapi_backend.so" Pack="true" PackagePath="runtimes/linux-x64/native/libnnapi_backend.so" />
+    <Content Include="$(RepoRoot)pkg/libtorch-cuda-12.8-linux-x64/lib/libc10.so" Pack="true" PackagePath="runtimes/linux-x64/native/libc10.so" />
+    <Content Include="$(RepoRoot)pkg/libtorch-cuda-12.8-linux-x64/lib/libc10_cuda.so" Pack="true" PackagePath="runtimes/linux-x64/native/libc10_cuda.so" />
+    <Content Include="$(RepoRoot)pkg/libtorch-cuda-12.8-linux-x64/lib/libnvrtc-builtins.so" Pack="true" PackagePath="runtimes/linux-x64/native/libnvrtc-builtins.so" />
+    <Content Include="$(RepoRoot)pkg/libtorch-cuda-12.8-linux-x64/lib/libtorch_python.so" Pack="true" PackagePath="runtimes/linux-x64/native/libtorch_python.so" />
+    
+    <!-- Small shared libraries -->
+    <Content Include="$(RepoRoot)pkg/libtorch-cuda-12.8-linux-x64/lib/libnvToolsExt-c498fcba.so.1" Pack="true" PackagePath="runtimes/linux-x64/native/libnvToolsExt-c498fcba.so.1" />
+    <Content Include="$(RepoRoot)pkg/libtorch-cuda-12.8-linux-x64/lib/libcufile_rdma-5257f22c.so.1" Pack="true" PackagePath="runtimes/linux-x64/native/libcufile_rdma-5257f22c.so.1" />
+    <Content Include="$(RepoRoot)pkg/libtorch-cuda-12.8-linux-x64/lib/libcudnn.so.9" Pack="true" PackagePath="runtimes/linux-x64/native/libcudnn.so.9" />
+    <Content Include="$(RepoRoot)pkg/libtorch-cuda-12.8-linux-x64/lib/libgomp-98b21ff3.so.1" Pack="true" PackagePath="runtimes/linux-x64/native/libgomp-98b21ff3.so.1" />
+    <Content Include="$(RepoRoot)pkg/libtorch-cuda-12.8-linux-x64/lib/libcudart-218eec4c.so.12" Pack="true" PackagePath="runtimes/linux-x64/native/libcudart-218eec4c.so.12" />
+    
+    <!-- Medium-sized CUDA support libraries -->
+    <Content Include="$(RepoRoot)pkg/libtorch-cuda-12.8-linux-x64/lib/libcudnn_graph.so.9" Pack="true" PackagePath="runtimes/linux-x64/native/libcudnn_graph.so.9" />
+    <Content Include="$(RepoRoot)pkg/libtorch-cuda-12.8-linux-x64/lib/libcufile-0c72d05c.so.0" Pack="true" PackagePath="runtimes/linux-x64/native/libcufile-0c72d05c.so.0" />
+    <Content Include="$(RepoRoot)pkg/libtorch-cuda-12.8-linux-x64/lib/libcudnn_cnn.so.9" Pack="true" PackagePath="runtimes/linux-x64/native/libcudnn_cnn.so.9" />
+    <Content Include="$(RepoRoot)pkg/libtorch-cuda-12.8-linux-x64/lib/libcudnn_engines_runtime_compiled.so.9" Pack="true" PackagePath="runtimes/linux-x64/native/libcudnn_engines_runtime_compiled.so.9" />
+  </ItemGroup>
+</Project>

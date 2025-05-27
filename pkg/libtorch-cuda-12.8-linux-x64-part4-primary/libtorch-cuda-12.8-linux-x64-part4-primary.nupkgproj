@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk" DefaultTargets="Pack">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>libtorch-cuda-12.8-linux-x64-part4-primary</PackageId>
+    <PackageDescription>LibTorch native libraries for CUDA 12.8 (Linux x64) - Part 4 Primary. Includes advanced CUDA libraries and neural network acceleration components. Optimized for RTX 5080 Blackwell GPU architecture and compatible with CUDA 12.8 ecosystem.</PackageDescription>
+    <PackageTags>pytorch;libtorch;cuda;gpu;nvidia;rtx5080;blackwell;cuda128;machine-learning;deep-learning</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="../common/RestitchPackage.props" Pack="true" PackagePath="buildTransitive/netstandard2.0/$(PackageId).props" />
+    <Content Include="../common/RestitchPackage.targets" Pack="true" PackagePath="buildTransitive/netstandard2.0/$(PackageId).targets" />
+    <Content Include="../empty.txt" Pack="true" PackagePath="lib/netstandard2.0/_._" />
+    <Content Include="$(RepoRoot)/THIRD-PARTY-NOTICES.txt" Pack="true" PackagePath="LICENSE-LIBTORCH.txt" />
+    
+    <!-- Part 4: First fragment of large CUDA BLAS library (200MB) -->
+    <Content Include="$(RepoRoot)pkg/libtorch-cuda-12.8-linux-x64/lib/libcublasLt-4ef47ce6.so.12" 
+             Pack="true" 
+             PackagePath="runtimes/linux-x64/native/fragments/libcublasLt-4ef47ce6.so.12.1.bytes" 
+             FileFragmentType="Head"
+             FileFragmentLength="200000000" />
+  </ItemGroup>
+</Project>

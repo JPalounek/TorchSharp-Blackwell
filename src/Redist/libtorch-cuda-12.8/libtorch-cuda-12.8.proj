@@ -3,11 +3,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <!-- Skip this project if CUDA 12.8 is requested -->
-    <SkipTargets Condition="'$(CudaVersionDot)' == '12.8'">true</SkipTargets>
+    <!-- Skip this project if CUDA 12.1 is requested (default) -->
+    <SkipTargets Condition="'$(CudaVersionDot)' != '12.8'">true</SkipTargets>
     <!-- see https://pytorch.org/get-started/locally/ for download links -->
-    <!-- For example Linux, LibTorch 1.9.0 https://download.pytorch.org/libtorch/cpu/libtorch-shared-with-deps-1.9.0%2Bcpu.zip -->
-    <!-- note the very odd characters %2Bcpu in the LibTorch download name. The % is encoded via %25 -->
+    <!-- For example Linux, LibTorch 2.7.0 https://download.pytorch.org/libtorch/cu128/libtorch-cxx11-abi-shared-with-deps-2.7.0%2Bcu128.zip -->
+    <!-- note the very odd characters %2Bcu128 in the LibTorch download name. The % is encoded via %25 -->
     <LocalBaseName>$(LibTorchCudaLocalBase)</LocalBaseName>
     <ArchiveBaseName>$(LibTorchCudaArchiveBase)</ArchiveBaseName>
     <ArchiveExtension>.zip</ArchiveExtension>
@@ -82,57 +82,62 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetOS)' == 'linux'">
-    <File Include= "libtorch\lib\libaoti_custom_ops.so" PackageSuffix="part1"  />
+    <!-- Part 1: Core libraries -->
+    <File Include= "libtorch\lib\libtorch.so" PackageSuffix="part1"  />
+    <File Include= "libtorch\lib\libtorch_global_deps.so" PackageSuffix="part1"  />
+    <File Include= "libtorch\lib\libcaffe2_nvrtc.so"  PackageSuffix="part1"  />
+    <File Include= "libtorch\lib\libshm.so"  PackageSuffix="part1"  />
+    <File Include= "libtorch\lib\libjitbackend_test.so"  PackageSuffix="part1"  />
     <File Include= "libtorch\lib\libbackend_with_compiler.so"  PackageSuffix="part1"  />
+    <File Include= "libtorch\lib\libaoti_custom_ops.so" PackageSuffix="part1"  />
+    <File Include= "libtorch\lib\libnnapi_backend.so"  PackageSuffix="part1"  />
+    <File Include= "libtorch\lib\libtorchbind_test.so" PackageSuffix="part1"  />
+    <File Include= "libtorch\lib\libc10d_cuda_test.so"  PackageSuffix="part1"  />
     <File Include= "libtorch\lib\libc10.so"  PackageSuffix="part1"  />
     <File Include= "libtorch\lib\libc10_cuda.so"  PackageSuffix="part1"  />
-    <File Include= "libtorch\lib\libc10d_cuda_test.so"  PackageSuffix="part1"  />
-    <File Include= "libtorch\lib\libcaffe2_nvrtc.so"  PackageSuffix="part1"  />
-    <File Include= "libtorch\lib\libcudart-9335f6a2.so.12" PackageSuffix="part1"  />
+    <File Include= "libtorch\lib\libnvrtc-builtins.so"  PackageSuffix="part1"  />
+    <File Include= "libtorch\lib\libtorch_python.so" PackageSuffix="part1"  />
+    <File Include= "libtorch\lib\libnvToolsExt-c498fcba.so.1" PackageSuffix="part1"  />
+    <File Include= "libtorch\lib\libcufile_rdma-5257f22c.so.1" PackageSuffix="part1"  />
     <File Include= "libtorch\lib\libcudnn.so.9" PackageSuffix="part1"  />
-    <File Include= "libtorch\lib\libcublas-37d11411.so.12" PackageSuffix="part1" />
-    <File Include= "libtorch\lib\libcudnn_engines_runtime_compiled.so.9" PackageSuffix="part1" />
-    <File Include= "libtorch\lib\libcudnn_graph.so.9" PackageSuffix="part1" />
-    <File Include= "libtorch\lib\libtorchbind_test.so" PackageSuffix="part1"  />
-    <File Include= "libtorch\lib\libcudnn_ops.so.9" PackageSuffix="part1" />
     <File Include= "libtorch\lib\libgomp-98b21ff3.so.1" PackageSuffix="part1" />
-    <File Include= "libtorch\lib\libjitbackend_test.so"  PackageSuffix="part1"  />
-    <File Include= "libtorch\lib\libnnapi_backend.so"  PackageSuffix="part1"  />
-    <File Include= "libtorch\lib\libnvToolsExt-847d78f2.so.1" PackageSuffix="part1"  />
-    <File Include= "libtorch\lib\libtorch_global_deps.so" PackageSuffix="part1"  />
+    <File Include= "libtorch\lib\libcudart-218eec4c.so.12" PackageSuffix="part1"  />
+    <File Include= "libtorch\lib\libcudnn_graph.so.9" PackageSuffix="part1" />
+    <File Include= "libtorch\lib\libcufile-0c72d05c.so.0" PackageSuffix="part1"  />
+    <File Include= "libtorch\lib\libcudnn_cnn.so.9" PackageSuffix="part1" />
+    <File Include= "libtorch\lib\libcudnn_engines_runtime_compiled.so.9" PackageSuffix="part1" />
 
-    <!-- This vast file needs a special magic, we split it into multiple chunks in different packages. -->
-    <!-- The chunks actually all have the same size but have different sections zero'd out. We "or" the bits back together on package restore. -->
-    <File Include= "libtorch\lib\libtorch_cpu.so"  PackageSuffix="part2-primary" FileUnstitchIndex="0" FileUnstitchStart="0" FileUnstitchSize="250000000" />
-    <File Include= "libtorch\lib\libtorch_cpu.so"  PackageSuffix="part2-fragment1" FileUnstitchIndex="1" FileUnstitchStart="250000000" FileUnstitchSize="-1" />
+    <!-- Part 2: CPU libraries -->
+    <File Include= "libtorch\lib\libtorch_cpu.so"  PackageSuffix="part2-primary" />
+    <File Include= "libtorch\lib\libcudnn_heuristic.so.9"  PackageSuffix="part2-primary"  />
 
-    <!-- This vast file needs a special magic, we split it into multiple chunks in different packages. -->
-    <!-- The chunks actually all have the same size but have different sections zero'd out. We "or" the bits back together on package restore. -->
-    <File Include= "libtorch\lib\libtorch_cuda.so"  PackageSuffix="part3-primary" FileUnstitchIndex="0" FileUnstitchStart="0" FileUnstitchSize="350000000" />
-    <File Include= "libtorch\lib\libtorch_cuda.so"  PackageSuffix="part3-fragment1" FileUnstitchIndex="1" FileUnstitchStart="350000000" FileUnstitchSize="350000000" />
-    <File Include= "libtorch\lib\libtorch_cuda.so"  PackageSuffix="part3-fragment2" FileUnstitchIndex="2" FileUnstitchStart="700000000" FileUnstitchSize="300000000" />
-    <File Include= "libtorch\lib\libtorch_cuda.so"  PackageSuffix="part3-fragment3" FileUnstitchIndex="3" FileUnstitchStart="1000000000" FileUnstitchSize="300000000" />
-    <File Include= "libtorch\lib\libtorch_cuda.so"  PackageSuffix="part3-fragment4" FileUnstitchIndex="4" FileUnstitchStart="1300000000" FileUnstitchSize="-1" />
+    <!-- Part 3: CUDA linalg library (fragmented) - Head -->
+    <File Include= "libtorch\lib\libtorch_cuda_linalg.so"  PackageSuffix="part3-primary" FileUnstitchIndex="0" FileUnstitchStart="0" FileUnstitchSize="400000000" />
+    <File Include= "libtorch\lib\libnvrtc-c8f577df.so.12" PackageSuffix="part3-primary"  />
 
-    <File Include= "libtorch\lib\libcudnn_engines_precompiled.so.9"  PackageSuffix="part4-primary" FileUnstitchIndex="0" FileUnstitchStart="0" FileUnstitchSize="275000000" />
-    <File Include= "libtorch\lib\libcudnn_engines_precompiled.so.9"  PackageSuffix="part4-fragment1" FileUnstitchIndex="1" FileUnstitchStart="275000000" FileUnstitchSize="-1" />
+    <!-- Part 4: CUDA linalg library (fragmented) - Tail -->
+    <File Include= "libtorch\lib\libtorch_cuda_linalg.so"  PackageSuffix="part4-primary" FileUnstitchIndex="1" FileUnstitchStart="400000000" FileUnstitchSize="-1" />
+    <File Include= "libtorch\lib\libcublas-f6c022dc.so.12" PackageSuffix="part4-primary" />
+    <File Include= "libtorch\lib\libcudnn_ops.so.9" PackageSuffix="part4-primary" />
 
-    <File Include= "libtorch\lib\libcublasLt-f97bfc2c.so.12"  PackageSuffix="part5-primary" FileUnstitchIndex="0" FileUnstitchStart="0" FileUnstitchSize="250000000" />
-    <File Include= "libtorch\lib\libcublasLt-f97bfc2c.so.12"  PackageSuffix="part5-fragment1" FileUnstitchIndex="1" FileUnstitchStart="250000000" FileUnstitchSize="-1" />
+    <!-- Part 5: CUDA library (fragmented) - Head -->
+    <File Include= "libtorch\lib\libtorch_cuda.so"  PackageSuffix="part5-primary" FileUnstitchIndex="0" FileUnstitchStart="0" FileUnstitchSize="450000000" />
+    <File Include= "libtorch\lib\libcusparseLt-978bd952.so.0" PackageSuffix="part5-primary" />
 
-    <File Include= "libtorch\lib\libcudnn_cnn.so.9" PackageSuffix="part6" />
-    <File Include= "libtorch\lib\libcudnn_heuristic.so.9"  PackageSuffix="part6"  />
-    <File Include= "libtorch\lib\libnvrtc-b51b459d.so.12" PackageSuffix="part6"  />
-    <File Include= "libtorch\lib\libtorch_python.so" PackageSuffix="part6"  />
+    <!-- Part 5 Fragment 1: CUDA library (fragmented) - Fragment 1 -->
+    <File Include= "libtorch\lib\libtorch_cuda.so"  PackageSuffix="part5-fragment1" FileUnstitchIndex="1" FileUnstitchStart="450000000" FileUnstitchSize="450000000" />
+    <File Include= "libtorch\lib\libcudnn_adv.so.9" PackageSuffix="part5-fragment1" />
 
-    <File Include= "libtorch\lib\libtorch_cuda_linalg.so"  PackageSuffix="part7-primary" FileUnstitchIndex="0" FileUnstitchStart="0" FileUnstitchSize="200000000" />
-    <File Include= "libtorch\lib\libtorch_cuda_linalg.so"  PackageSuffix="part7-fragment1" FileUnstitchIndex="1" FileUnstitchStart="200000000" FileUnstitchSize="-1" />
+    <!-- Part 6: CUDA library (fragmented) - Fragment 2 -->
+    <File Include= "libtorch\lib\libtorch_cuda.so"  PackageSuffix="part6-primary" FileUnstitchIndex="2" FileUnstitchStart="900000000" FileUnstitchSize="450000000" />
+    <File Include= "libtorch\lib\libcudnn_engines_precompiled.so.9"  PackageSuffix="part6-primary" />
 
-    <File Include= "libtorch\lib\libnvrtc-builtins.so"  PackageSuffix="part8" />
-    <File Include= "libtorch\lib\libshm.so"  PackageSuffix="part8" />
-    <File Include= "libtorch\lib\libtorch.so"  PackageSuffix="part8"  />
-    <File Include= "libtorch\lib\libcudnn_adv.so.9"  PackageSuffix="part8" />
+    <!-- Part 7: CUDA library (fragmented) - Fragment 3 -->
+    <File Include= "libtorch\lib\libtorch_cuda.so"  PackageSuffix="part7-primary" FileUnstitchIndex="3" FileUnstitchStart="1350000000" FileUnstitchSize="450000000" />
 
+    <!-- Part 8: CUDA library (fragmented) - Tail -->
+    <File Include= "libtorch\lib\libtorch_cuda.so"  PackageSuffix="part8-primary" FileUnstitchIndex="4" FileUnstitchStart="1800000000" FileUnstitchSize="-1" />
+    <File Include= "libtorch\lib\libcublasLt-4ef47ce6.so.12" PackageSuffix="part8-primary" />
 
   </ItemGroup>
 

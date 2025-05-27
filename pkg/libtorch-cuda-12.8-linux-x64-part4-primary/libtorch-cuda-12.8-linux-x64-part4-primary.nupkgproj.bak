@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk" DefaultTargets="Pack">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\common\RestitchPackage.props" Pack="true" PackagePath="buildTransitive\netstandard2.0\$(MSBuildProjectName).props" />
+    <Content Include="..\common\RestitchPackage.targets" Pack="true" PackagePath="buildTransitive\netstandard2.0\$(MSBuildProjectName).targets" />
+    <Content Include="..\empty.txt" Pack="true" PackagePath="lib\netstandard2.0\_._" />
+    <Content Include="$(RepoRoot)\THIRD-PARTY-NOTICES.txt" Pack="true" PackagePath="LICENSE-LIBTORCH.txt" />
+    
+    <!-- Part 4: Second half of CUDA Linear Algebra Package -->
+    <Content Include="$(MassiveDownloadRoot)libtorch-cuda-12.8-linux-x64\lib\libtorch_cuda_linalg.so" 
+             Pack="true" 
+             PackagePath="runtimes\linux-x64\native\fragments\libtorch_cuda_linalg.so.2.bytes" 
+             FileFragmentType="Tail"
+             FileFragmentOffset="400000000" />
+    
+    <!-- Additional CUDA libraries -->
+    <Content Include="$(MassiveDownloadRoot)libtorch-cuda-12.8-linux-x64\lib\libcublas-f6c022dc.so.12" Pack="true" PackagePath="runtimes\linux-x64\native\libcublas-f6c022dc.so.12" />
+    <Content Include="$(MassiveDownloadRoot)libtorch-cuda-12.8-linux-x64\lib\libcudnn_ops.so.9" Pack="true" PackagePath="runtimes\linux-x64\native\libcudnn_ops.so.9" />
+  </ItemGroup>
+</Project>

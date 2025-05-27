@@ -1,4 +1,4 @@
-<Project>
+<Project DefaultTargets="Pack">
   <Import Project="..\Directory.Build.props" />
   <ItemGroup>
     <PackProject Include="**\libtorch-cpu.nupkgproj" Condition="'$(IncludeLibTorchCpuPackages)' == 'true'" />
@@ -12,12 +12,23 @@
     <PackProject Include="**\TorchSharp.nupkgproj" />
     <PackProject Include="**\TorchSharp-cpu.nupkgproj"  />
     <PackProject Include="**\TorchSharp-cuda-linux.nupkgproj" />
+    <PackProject Include="**\TorchSharp-cuda-12.8-linux.nupkgproj" Condition="'$(CudaVersionDot)' == '12.8'" />
     <PackProject Include="**\TorchSharp-cuda-windows.nupkgproj" />
     <PackProject Include="**\TorchVision.nupkgproj" />
   </ItemGroup>
   <Target Name="Restore">
     <Message Text="Restoring packaging projects..." Importance="high" />
     <MSBuild Projects="%(PackProject.Identity)" Targets="Restore" />
+  </Target>
+  <Target Name="ShowProjects">
+    <Message Text="=== CUDA VERSION DEBUG ===" Importance="high" />
+    <Message Text="CudaVersionDot: $(CudaVersionDot)" Importance="high" />
+    <Message Text="TargetOS: $(TargetOS)" Importance="high" />
+    <Message Text="IncludeLibTorchCudaPackages: $(IncludeLibTorchCudaPackages)" Importance="high" />
+    <Message Text="IncludeTorchSharpPackage: $(IncludeTorchSharpPackage)" Importance="high" />
+    <Message Text="=== PROJECTS TO BUILD ===" Importance="high" />
+    <Message Text="%(PackProject.Identity)" Importance="high" />
+    <Message Text="=== END DEBUG ===" Importance="high" />
   </Target>
   <Target Name="Pack" DependsOnTargets="Restore">
     <Warning Text="Packages will be incomplete and unusable on linux platforms. To get a complete package you need the LibTorchSharp.so binaries for other platforms and copy them into '$(PackagePreparationPath)' to make complete packages. This is automated by Azure Pipelines."

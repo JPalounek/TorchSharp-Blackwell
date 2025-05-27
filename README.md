@@ -1,3 +1,53 @@
+# TorchSharp with CUDA 12.8 Support for NVIDIA RTX5080 (Blackwell Architecture)
+
+This fork of TorchSharp adds support for NVIDIA's RTX5080 GPUs with Blackwell architecture using CUDA 12.8 and LibTorch 2.7.0.
+
+## New Features
+
+- **CUDA 12.8 Support**: Added packages for LibTorch 2.7.0 with CUDA 12.8 libraries
+- **RTX5080 (Blackwell) Support**: Optimized for NVIDIA's latest GPU architecture  
+- **Linux Support**: Currently available for Linux platforms (Windows support planned)
+- **Version 0.105.1**: Latest stable release with CUDA 12.8 integration
+
+## Installation
+
+### From NuGet (Once Published)
+
+```bash
+dotnet add package TorchSharp-cuda-12.8-linux
+```
+
+### Building from Source
+
+To build and use the CUDA 12.8 packages locally:
+
+1. Clone this repository
+2. Run the deployment script: `./deploy.sh --server your-linux-server`
+3. On the Linux server, run: `./build.sh`
+4. Use the generated packages from `nuget-output/`
+
+## System Requirements
+
+- Ubuntu 22.04.5 LTS or compatible Linux distribution
+- CUDA 12.8 drivers installed
+- NVIDIA RTX5080 GPU (Blackwell architecture) or newer
+- .NET 6.0 or newer
+- Minimum 20GB free disk space for building
+
+## Package Structure
+
+This implementation includes segmented packages to handle large LibTorch binaries:
+
+- `TorchSharp-cuda-12.8-linux` - Main meta-package
+- `libtorch-cuda-12.8-linux-x64` - Core LibTorch package
+- `libtorch-cuda-12.8-linux-x64-part1` through `part8-primary` - Segmented binary packages
+
+The segmentation is necessary due to NuGet package size limits and allows for efficient distribution of the ~6GB LibTorch CUDA 12.8 runtime.
+
+**Note**: The LibTorch binaries are sourced from the official PyTorch 2.7.0 Linux C++ distribution with CUDA 12.8 support, ensuring full compatibility and performance optimization for RTX 5080 GPUs.
+
+---
+
 [![Gitter](https://badges.gitter.im/dotnet/TorchSharp.svg)](https://gitter.im/dotnet/TorchSharp?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 <br/>
 [![Build Status](https://dotnet.visualstudio.com/TorchSharp/_apis/build/status/dotnet.TorchSharp?branchName=main)](https://dotnet.visualstudio.com/TorchSharp/_build/latest?definitionId=174&branchName=main)
@@ -99,6 +149,7 @@ We recommend using one of the 'bundled' packages, which will pull in both TorchS
 - [TorchSharp-cpu](https://www.nuget.org/packages/TorchSharp-cpu) (CPU, Linux/Windows/OSX)
 - [TorchSharp-cuda-windows](https://www.nuget.org/packages/TorchSharp-cuda-windows) (CPU/CUDA 12.1, Windows)
 - [TorchSharp-cuda-linux](https://www.nuget.org/packages/TorchSharp-cuda-linux) (CPU/CUDA 12.1, Linux)
+- [TorchSharp-cuda-12.8-linux](#building-from-source) (CPU/CUDA 12.8, Linux) - For RTX5080 GPUs (build from source)
 
 Otherwise, you also need one of the LibTorch backend packages: https://www.nuget.org/packages?q=libtorch, specifically one of
 
@@ -116,6 +167,11 @@ Otherwise, you also need one of the LibTorch backend packages: https://www.nuget
   > .NET 6, e.g. .NET SDK version `6.0.100-preview.5.21302.13` or greater.
 
 * `libtorch-cuda-12.1-win-x64` (CPU/CUDA 12.1, Windows)
+
+* `libtorch-cuda-12.8-linux-x64` (CPU/CUDA 12.8, Linux) - For RTX5080 GPUs with Blackwell architecture (build from source)
+
+  > NOTE: Due to the presence of very large native binaries (~6GB), using the `libtorch-cuda-12.8-linux-x64` package requires
+  > .NET 6 or greater. This package is Linux-only and specifically optimized for NVIDIA's RTX5080 GPUs.
 
 Alternatively you can access the LibTorch native binaries via direct reference to existing local native
 binaries of LibTorch installed through other means (for example, by installing [PyTorch](https://pytorch.org/) using a Python package manager). You will have to add an explicit load of the relevant native library, for example:

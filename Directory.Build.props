@@ -88,6 +88,7 @@
   <PropertyGroup Condition="'$(MSBuildProjectName.IndexOf(`libtorch-`))' != '-1'">
     <LibTorchPackageVersion>2.5.1.0</LibTorchPackageVersion>
     <LibTorchPackageVersion Condition="'$(TargetOS)' == 'mac' and '$(TargetArchitecture)' == 'x64'">2.2.2.0</LibTorchPackageVersion>
+    <LibTorchPackageVersion Condition="'$(MSBuildProjectName.IndexOf(`cuda-12.8-`))' != '-1'">2.7.0.0</LibTorchPackageVersion>
     <EnablePackageValidation>false</EnablePackageValidation>
     <VersionPrefix>$(LibTorchPackageVersion)</VersionPrefix>
     <VersionSuffix></VersionSuffix>
@@ -99,11 +100,13 @@
     <SkipCuda Condition="'$(TargetOS)' != 'mac'">false</SkipCuda>
     <SkipTests>false</SkipTests>
 
-    <!-- By default only TorchSharp and no libtorch-cpu or libtorch-cuda packages are built.  The CI file controls these via 'BuildLibTorchPackages' -->
-    <!-- This then selectively turns these on over several CI jobs since different pacakges are done in different jobs -->
+    <!-- Build package settings -->
+    <!-- By default only TorchSharp and no libtorch-cpu or libtorch-cuda packages are built -->
     <IncludeTorchSharpPackage>true</IncludeTorchSharpPackage>
     <IncludeLibTorchCpuPackages>false</IncludeLibTorchCpuPackages>
     <IncludeLibTorchCudaPackages>false</IncludeLibTorchCudaPackages>
+    <!-- Docker build environment should enable CUDA packages -->
+    <IncludeLibTorchCudaPackages Condition="'$(DOCKER_BUILD)' == 'true'">true</IncludeLibTorchCudaPackages>
   </PropertyGroup>
 
   <!--

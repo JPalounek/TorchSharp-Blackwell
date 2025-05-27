@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk" DefaultTargets="Pack">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>libtorch-cuda-12.8-linux-x64-part4-fragment3</PackageId>
+    <PackageDescription>⚠️ UNOFFICIAL EXPERIMENTAL ⚠️ LibTorch CUDA 12.8 Part 4 Fragment for RTX 5080. Community experimental package - NOT officially supported. Development/research only.</PackageDescription>
+    <PackageTags>pytorch;libtorch;cuda;gpu;nvidia;rtx5080;blackwell;cuda128;machine-learning;deep-learning;unofficial;experimental;community</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="../common/RestitchPackage.props" Pack="true" PackagePath="buildTransitive/netstandard2.0/$(PackageId).props" />
+    <Content Include="../common/RestitchPackage.targets" Pack="true" PackagePath="buildTransitive/netstandard2.0/$(PackageId).targets" />
+    <Content Include="../empty.txt" Pack="true" PackagePath="lib/netstandard2.0/_._" />
+    <Content Include="$(RepoRoot)/THIRD-PARTY-NOTICES.txt" Pack="true" PackagePath="LICENSE-LIBTORCH.txt" />
+    
+    <!-- Part 4 Fragment 3: Final part of CUDA BLAS library (145MB) -->
+    <Content Include="$(RepoRoot)pkg/libtorch-cuda-12.8-linux-x64/lib/libcublasLt-4ef47ce6.so.12" 
+             Pack="true" 
+             PackagePath="runtimes/linux-x64/native/fragments/libcublasLt-4ef47ce6.so.12.4.bytes" 
+             FileFragmentType="Fragment"
+             FileFragmentOffset="600000000"
+             FileFragmentLength="145000000" />
+    
+    <!-- Additional smaller CUDA libraries -->
+    <Content Include="$(RepoRoot)pkg/libtorch-cuda-12.8-linux-x64/lib/libcublas-f6c022dc.so.12" Pack="true" PackagePath="runtimes/linux-x64/native/libcublas-f6c022dc.so.12" />
+    <Content Include="$(RepoRoot)pkg/libtorch-cuda-12.8-linux-x64/lib/libcudnn_ops.so.9" Pack="true" PackagePath="runtimes/linux-x64/native/libcudnn_ops.so.9" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk" DefaultTargets="Pack">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>libtorch-cuda-12.8-linux-x64-part5-primary</PackageId>
+    <PackageDescription>LibTorch native libraries for CUDA 12.8 (Linux x64) - Part 5 Primary. Includes core CUDA computation libraries and memory management components. Optimized for RTX 5080 Blackwell GPU architecture and compatible with CUDA 12.8 ecosystem.</PackageDescription>
+    <PackageTags>pytorch;libtorch;cuda;gpu;nvidia;rtx5080;blackwell;cuda128;machine-learning;deep-learning</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="../common/RestitchPackage.props" Pack="true" PackagePath="buildTransitive/netstandard2.0/$(PackageId).props" />
+    <Content Include="../common/RestitchPackage.targets" Pack="true" PackagePath="buildTransitive/netstandard2.0/$(PackageId).targets" />
+    <Content Include="../empty.txt" Pack="true" PackagePath="lib/netstandard2.0/_._" />
+    <Content Include="$(RepoRoot)/THIRD-PARTY-NOTICES.txt" Pack="true" PackagePath="LICENSE-LIBTORCH.txt" />
+    
+    <!-- Part 5: First part of main CUDA library -->
+    <Content Include="$(RepoRoot)pkg/libtorch-cuda-12.8-linux-x64/lib/libtorch_cuda.so" 
+             Pack="true" 
+             PackagePath="runtimes/linux-x64/native/fragments/libtorch_cuda.so.1.bytes" 
+             FileFragmentType="Head"
+             FileFragmentLength="450000000" />
+    
+    <!-- Additional CUDA libraries -->
+    <Content Include="$(RepoRoot)pkg/libtorch-cuda-12.8-linux-x64/lib/libcusparseLt-978bd952.so.0" Pack="true" PackagePath="runtimes/linux-x64/native/libcusparseLt-978bd952.so.0" />
+  </ItemGroup>
+</Project>

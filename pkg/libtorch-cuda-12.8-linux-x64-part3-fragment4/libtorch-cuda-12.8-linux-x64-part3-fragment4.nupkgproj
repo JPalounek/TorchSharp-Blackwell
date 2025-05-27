@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk" DefaultTargets="Pack">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>libtorch-cuda-12.8-linux-x64-part3-fragment4</PackageId>
+    <PackageDescription>⚠️ UNOFFICIAL EXPERIMENTAL ⚠️ LibTorch CUDA 12.8 Part 3 Fragment for RTX 5080. Community experimental package - NOT officially supported. Development/research only.</PackageDescription>
+    <PackageTags>pytorch;libtorch;cuda;gpu;nvidia;rtx5080;blackwell;cuda128;machine-learning;deep-learning;unofficial;experimental;community</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="../common/RestitchPackage.props" Pack="true" PackagePath="buildTransitive/netstandard2.0/$(PackageId).props" />
+    <Content Include="../common/RestitchPackage.targets" Pack="true" PackagePath="buildTransitive/netstandard2.0/$(PackageId).targets" />
+    <Content Include="../empty.txt" Pack="true" PackagePath="lib/netstandard2.0/_._" />
+    <Content Include="$(RepoRoot)/THIRD-PARTY-NOTICES.txt" Pack="true" PackagePath="LICENSE-LIBTORCH.txt" />
+    
+    <!-- Part 3 Fragment 4: Final part of CUDA linear algebra library (203MB) -->
+    <Content Include="$(RepoRoot)pkg/libtorch-cuda-12.8-linux-x64/lib/libtorch_cuda_linalg.so" 
+             Pack="true" 
+             PackagePath="runtimes/linux-x64/native/fragments/libtorch_cuda_linalg.so.4.bytes" 
+             FileFragmentType="Fragment"
+             FileFragmentOffset="600000000"
+             FileFragmentLength="203000000" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk" DefaultTargets="Pack">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>libtorch-cuda-12.8-linux-x64</PackageId>
+    <PackageDescription>⚠️ UNOFFICIAL EXPERIMENTAL PACKAGE ⚠️ LibTorch native libraries for CUDA 12.8 (Linux x64) supporting RTX 5080 Blackwell GPUs. This is a community-maintained experimental package with PyTorch 2.7.0 + CUDA 12.8 runtime for early RTX 5080 testing. NOT officially supported by PyTorch or NVIDIA. Use at your own risk for development/research only.</PackageDescription>
+    <PackageTags>pytorch;libtorch;cuda;gpu;nvidia;rtx5080;blackwell;cuda128;machine-learning;deep-learning;unofficial;experimental;community</PackageTags>
+    <PackageReadmeFile>BLACKWELL-README.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+     <ProjectReference Include="../libtorch-cuda-12.8-linux-x64-part1/libtorch-cuda-12.8-linux-x64-part1.nupkgproj" />
+     <ProjectReference Include="../libtorch-cuda-12.8-linux-x64-part2-primary/libtorch-cuda-12.8-linux-x64-part2-primary.nupkgproj" />
+     <ProjectReference Include="../libtorch-cuda-12.8-linux-x64-part3-primary/libtorch-cuda-12.8-linux-x64-part3-primary.nupkgproj" />
+     <ProjectReference Include="../libtorch-cuda-12.8-linux-x64-part4-primary/libtorch-cuda-12.8-linux-x64-part4-primary.nupkgproj" />
+     <ProjectReference Include="../libtorch-cuda-12.8-linux-x64-part5-primary/libtorch-cuda-12.8-linux-x64-part5-primary.nupkgproj" />
+     <ProjectReference Include="../libtorch-cuda-12.8-linux-x64-part5-fragment1/libtorch-cuda-12.8-linux-x64-part5-fragment1.nupkgproj" />
+     <ProjectReference Include="../libtorch-cuda-12.8-linux-x64-part6-primary/libtorch-cuda-12.8-linux-x64-part6-primary.nupkgproj" />
+     <ProjectReference Include="../libtorch-cuda-12.8-linux-x64-part7-primary/libtorch-cuda-12.8-linux-x64-part7-primary.nupkgproj" />
+     <ProjectReference Include="../libtorch-cuda-12.8-linux-x64-part8-primary/libtorch-cuda-12.8-linux-x64-part8-primary.nupkgproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\common\CudaHeadPackage.props" Pack="true" PackagePath="buildTransitive\netstandard2.0\$(PackageId).props" />
+    <Content Include="..\common\CudaHeadPackage.targets" Pack="true" PackagePath="buildTransitive\netstandard2.0\$(PackageId).targets" />
+    <Content Include="..\empty.txt" Pack="true" PackagePath="lib\netstandard2.0\_._" />
+    <Content Include="$(RepoRoot)\THIRD-PARTY-NOTICES.txt" Pack="true" PackagePath="LICENSE-LIBTORCH.txt" />
+    <None Include="..\BLACKWELL-README.md" Pack="true" PackagePath="BLACKWELL-README.md" />
+  </ItemGroup>
+</Project>

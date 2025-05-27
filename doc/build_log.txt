@@ -1,0 +1,530 @@
+[0;34m[INFO][0m TorchSharp CUDA 12.8 Build Script
+[0;34m[INFO][0m =================================
+[0;34m[INFO][0m Checking available disk space...
+[0;32m[SUCCESS][0m Sufficient disk space available: 32GB
+[0;34m[INFO][0m Cleaning previous build artifacts...
+Clearing NuGet global packages folder: /root/.nuget/packages/
+Local resources cleared.
+[0;32m[SUCCESS][0m Build artifacts cleaned
+[0;34m[INFO][0m Restoring NuGet packages...
+  Determining projects to restore...
+  Restored /root/torchsharp-build/pkg/FileRestitcher/FileRestitcher/FileRestitcher.csproj (in 996 ms).
+  Restored /root/torchsharp-build/src/TorchSharp/TorchSharp.csproj (in 3.02 sec).
+  Restored /root/torchsharp-build/src/TorchVision/TorchVision.csproj (in 3.02 sec).
+  Restored /root/torchsharp-build/src/TorchAudio/TorchAudio.csproj (in 3.02 sec).
+  Restored /root/torchsharp-build/src/Examples.Utils/Examples.Utils.csproj (in 3.02 sec).
+  Restored /root/torchsharp-build/src/FSharp.Examples/FSharp.Examples.fsproj (in 3.02 sec).
+  Restored /root/torchsharp-build/src/Examples/Examples.csproj (in 3.02 sec).
+  Restored /root/torchsharp-build/test/TorchSharpTest/TorchSharpTest.csproj (in 4.5 sec).
+  Restored /root/torchsharp-build/test/TorchSharpTest.WithCudaBinaries/TorchSharpTest.WithCudaBinaries.csproj (in 6.52 sec).
+[0;32m[SUCCESS][0m Package restore completed
+[0;34m[INFO][0m Building TorchSharp projects...
+  Determining projects to restore...
+  Restored /root/torchsharp-build/src/TorchAudio/TorchAudio.csproj (in 135 ms).
+  Restored /root/torchsharp-build/src/TorchSharp/TorchSharp.csproj (in 135 ms).
+  Restored /root/torchsharp-build/src/Examples.Utils/Examples.Utils.csproj (in 135 ms).
+  Restored /root/torchsharp-build/src/TorchVision/TorchVision.csproj (in 135 ms).
+  Restored /root/torchsharp-build/src/FSharp.Examples/FSharp.Examples.fsproj (in 135 ms).
+  Restored /root/torchsharp-build/src/Examples/Examples.csproj (in 135 ms).
+  Restored /root/torchsharp-build/pkg/FileRestitcher/FileRestitcher/FileRestitcher.csproj (in 135 ms).
+  Restored /root/torchsharp-build/test/TorchSharpTest/TorchSharpTest.csproj (in 181 ms).
+  Restored /root/torchsharp-build/test/TorchSharpTest.WithCudaBinaries/TorchSharpTest.WithCudaBinaries.csproj (in 181 ms).
+  Restored /root/torchsharp-build/pkg/FileRestitcher/FileRestitcher.Tests/FileRestitcher.Tests.csproj (in 980 ms).
+  Using VersionSuffix = 
+  Using Version = 0.105.1
+  FileRestitcher -> /root/torchsharp-build/bin/AnyCPU.Release/FileRestitcher/netstandard2.0/FileRestitcher.dll
+  Using VersionSuffix = 
+  Using Version = 0.105.1
+  FileRestitcher.Tests -> /root/torchsharp-build/bin/AnyCPU.Release/FileRestitcher.Tests/net6.0/FileRestitcher.Tests.dll
+  Downloading from "https://raw.githubusercontent.com/pytorch/pytorch/master/LICENSE" to "/root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.1/LICENSE-LIBTORCH" (3464 bytes).
+  GetFileHash /root/torchsharp-build/../libtorch-cuda-12.1/libtorch-cxx11-abi-shared-with-deps-2.5.1%2Bcu121.zip
+  Unzip /root/torchsharp-build/../libtorch-cuda-12.1/libtorch-cxx11-abi-shared-with-deps-2.5.1%2Bcu121.zip --> /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.1/libtorch-cxx11-abi-shared-with-deps-2.5.1cu121
+  libtorch/lib/libaoti_custom_ops.so;libtorch/lib/libbackend_with_compiler.so;libtorch/lib/libc10.so;libtorch/lib/libc10_cuda.so;libtorch/lib/libc10d_cuda_test.so;libtorch/lib/libcaffe2_nvrtc.so;libtorch/lib/libcudart-9335f6a2.so.12;libtorch/lib/libcudnn.so.9;libtorch/lib/libcublas-37d11411.so.12;libtorch/lib/libcudnn_engines_runtime_compiled.so.9;libtorch/lib/libcudnn_graph.so.9;libtorch/lib/libtorchbind_test.so;libtorch/lib/libcudnn_ops.so.9;libtorch/lib/libgomp-98b21ff3.so.1;libtorch/lib/libjitbackend_test.so;libtorch/lib/libnnapi_backend.so;libtorch/lib/libnvToolsExt-847d78f2.so.1;libtorch/lib/libtorch_global_deps.so -> /root/torchsharp-build/bin/obj/packprep/Release/libtorch-cuda-12.1-linux-x64-part1\runtimes\linux-x64\native\
+  libtorch/lib/libtorch_cpu.so -> /root/torchsharp-build/bin/obj/packprep/Release/libtorch-cuda-12.1-linux-x64-part2-primary\runtimes\linux-x64\native\
+  libtorch/lib/libtorch_cpu.so -> /root/torchsharp-build/bin/obj/packprep/Release/libtorch-cuda-12.1-linux-x64-part2-fragment1\runtimes\linux-x64\native\
+  libtorch/lib/libtorch_cuda.so -> /root/torchsharp-build/bin/obj/packprep/Release/libtorch-cuda-12.1-linux-x64-part3-primary\runtimes\linux-x64\native\
+  libtorch/lib/libtorch_cuda.so -> /root/torchsharp-build/bin/obj/packprep/Release/libtorch-cuda-12.1-linux-x64-part3-fragment1\runtimes\linux-x64\native\
+  libtorch/lib/libtorch_cuda.so -> /root/torchsharp-build/bin/obj/packprep/Release/libtorch-cuda-12.1-linux-x64-part3-fragment2\runtimes\linux-x64\native\
+  libtorch/lib/libtorch_cuda.so -> /root/torchsharp-build/bin/obj/packprep/Release/libtorch-cuda-12.1-linux-x64-part3-fragment3\runtimes\linux-x64\native\
+  libtorch/lib/libtorch_cuda.so -> /root/torchsharp-build/bin/obj/packprep/Release/libtorch-cuda-12.1-linux-x64-part3-fragment4\runtimes\linux-x64\native\
+  libtorch/lib/libcudnn_engines_precompiled.so.9 -> /root/torchsharp-build/bin/obj/packprep/Release/libtorch-cuda-12.1-linux-x64-part4-primary\runtimes\linux-x64\native\
+  libtorch/lib/libcudnn_engines_precompiled.so.9 -> /root/torchsharp-build/bin/obj/packprep/Release/libtorch-cuda-12.1-linux-x64-part4-fragment1\runtimes\linux-x64\native\
+  libtorch/lib/libcublasLt-f97bfc2c.so.12 -> /root/torchsharp-build/bin/obj/packprep/Release/libtorch-cuda-12.1-linux-x64-part5-primary\runtimes\linux-x64\native\
+  libtorch/lib/libcublasLt-f97bfc2c.so.12 -> /root/torchsharp-build/bin/obj/packprep/Release/libtorch-cuda-12.1-linux-x64-part5-fragment1\runtimes\linux-x64\native\
+  libtorch/lib/libcudnn_cnn.so.9;libtorch/lib/libcudnn_heuristic.so.9;libtorch/lib/libnvrtc-b51b459d.so.12;libtorch/lib/libtorch_python.so -> /root/torchsharp-build/bin/obj/packprep/Release/libtorch-cuda-12.1-linux-x64-part6\runtimes\linux-x64\native\
+  libtorch/lib/libtorch_cuda_linalg.so -> /root/torchsharp-build/bin/obj/packprep/Release/libtorch-cuda-12.1-linux-x64-part7-primary\runtimes\linux-x64\native\
+  libtorch/lib/libtorch_cuda_linalg.so -> /root/torchsharp-build/bin/obj/packprep/Release/libtorch-cuda-12.1-linux-x64-part7-fragment1\runtimes\linux-x64\native\
+  libtorch/lib/libnvrtc-builtins.so;libtorch/lib/libshm.so;libtorch/lib/libtorch.so;libtorch/lib/libcudnn_adv.so.9 -> /root/torchsharp-build/bin/obj/packprep/Release/libtorch-cuda-12.1-linux-x64-part8\runtimes\linux-x64\native\
+  Downloading from "https://raw.githubusercontent.com/pytorch/pytorch/master/LICENSE" to "/root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cpu/LICENSE-LIBTORCH" (3464 bytes).
+  GetFileHash /root/torchsharp-build/../libtorch-cpu/libtorch-cxx11-abi-shared-with-deps-2.5.1%2Bcpu.zip
+  Unzip /root/torchsharp-build/../libtorch-cpu/libtorch-cxx11-abi-shared-with-deps-2.5.1%2Bcpu.zip --> /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cpu/libtorch-cxx11-abi-shared-with-deps-2.5.1cpu
+  Copy libtorch/lib/libaoti_custom_ops.so;libtorch/lib/libbackend_with_compiler.so;libtorch/lib/libc10.so;libtorch/lib/libgomp-98b21ff3.so.1;libtorch/lib/libjitbackend_test.so;libtorch/lib/libnnapi_backend.so;libtorch/lib/libshm.so;libtorch/lib/libtorch.so;libtorch/lib/libtorchbind_test.so;libtorch/lib/libtorch_global_deps.so;libtorch/lib/libtorch_python.so;libtorch/lib/libtorch_cpu.so -> /root/torchsharp-build/bin/obj/packprep/Release/libtorch-cpu-linux-x64\runtimes\linux-x64\native\
+  /root/torchsharp-build/src/Native/build.sh --configuration Release --arch x64  --libtorchpath /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cpu/libtorch-cxx11-abi-shared-with-deps-2.5.1cpu/libtorch/share/cmake/Torch
+  Unsupported OS 'Linux' detected. Downloading linux- tools.
+  Building Machine Learning native components from /root/torchsharp-build/src/Native to /root/torchsharp-build/bin/obj/x64.Release/Native
+  cmake version 3.22.1
+  
+  CMake suite maintained and supported by Kitware (kitware.com/cmake).
+  + cmake /root/torchsharp-build/src/Native -G 'Unix Makefiles' -DCMAKE_BUILD_TYPE=Release -DLIBTORCH_PATH=/root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cpu/libtorch-cxx11-abi-shared-with-deps-2.5.1cpu/libtorch/share/cmake/Torch -DLIBTORCH_ARCH=x64
+  CMake Warning (dev) in CMakeLists.txt:
+    No project() command is present.  The top-level CMakeLists.txt file must
+    contain a literal, direct call to the project() command.  Add a line of
+    code such as
+  
+      project(ProjectName)
+  
+    near the top of the file, but after cmake_minimum_required().
+  
+    CMake is pretending there is a "project(Project)" command on the first
+    line.
+  This warning is for project developers.  Use -Wno-dev to suppress it.
+  
+  -- The C compiler identification is GNU 11.4.0
+  -- The CXX compiler identification is GNU 11.4.0
+  -- Detecting C compiler ABI info
+  -- Detecting C compiler ABI info - done
+  -- Check for working C compiler: /usr/bin/cc - skipped
+  -- Detecting C compile features
+  -- Detecting C compile features - done
+  -- Detecting CXX compiler ABI info
+  -- Detecting CXX compiler ABI info - done
+  -- Check for working CXX compiler: /usr/bin/c++ - skipped
+  -- Detecting CXX compile features
+  -- Detecting CXX compile features - done
+  -- Found Torch: /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cpu/libtorch-cxx11-abi-shared-with-deps-2.5.1cpu/libtorch/lib/libtorch.so  
+  -- Configuring done
+  -- Generating done
+  -- Build files have been written to: /root/torchsharp-build/bin/obj/x64.Release/Native
+  + set +x
+  [  4%] Building CXX object LibTorchSharp/CMakeFiles/LibTorchSharp.dir/cifar10.cpp.o
+  [  8%] Building C object LibTorchSharp/CMakeFiles/LibTorchSharp.dir/crc32c.c.o
+  [ 12%] Building CXX object LibTorchSharp/CMakeFiles/LibTorchSharp.dir/THSActivation.cpp.o
+  [ 16%] Building CXX object LibTorchSharp/CMakeFiles/LibTorchSharp.dir/THSAutograd.cpp.o
+  [ 20%] Building CXX object LibTorchSharp/CMakeFiles/LibTorchSharp.dir/THSData.cpp.o
+  [ 25%] Building CXX object LibTorchSharp/CMakeFiles/LibTorchSharp.dir/THSFFT.cpp.o
+  [ 29%] Building CXX object LibTorchSharp/CMakeFiles/LibTorchSharp.dir/THSJIT.cpp.o
+  [ 33%] Building CXX object LibTorchSharp/CMakeFiles/LibTorchSharp.dir/THSLinearAlgebra.cpp.o
+  [ 37%] Building CXX object LibTorchSharp/CMakeFiles/LibTorchSharp.dir/THSLoss.cpp.o
+  [ 41%] Building CXX object LibTorchSharp/CMakeFiles/LibTorchSharp.dir/THSModule.cpp.o
+  [ 45%] Building CXX object LibTorchSharp/CMakeFiles/LibTorchSharp.dir/THSNN.cpp.o
+  [ 50%] Building CXX object LibTorchSharp/CMakeFiles/LibTorchSharp.dir/THSNormalization.cpp.o
+  [ 54%] Building CXX object LibTorchSharp/CMakeFiles/LibTorchSharp.dir/THSOptimizers.cpp.o
+  [ 58%] Building CXX object LibTorchSharp/CMakeFiles/LibTorchSharp.dir/THSRandom.cpp.o
+  [ 62%] Building CXX object LibTorchSharp/CMakeFiles/LibTorchSharp.dir/THSSpecial.cpp.o
+  [ 66%] Building CXX object LibTorchSharp/CMakeFiles/LibTorchSharp.dir/THSStorage.cpp.o
+  [ 70%] Building CXX object LibTorchSharp/CMakeFiles/LibTorchSharp.dir/THSTensor.cpp.o
+  [ 75%] Building CXX object LibTorchSharp/CMakeFiles/LibTorchSharp.dir/THSTensorConv.cpp.o
+  [ 79%] Building CXX object LibTorchSharp/CMakeFiles/LibTorchSharp.dir/THSTensorFactories.cpp.o
+  [ 83%] Building CXX object LibTorchSharp/CMakeFiles/LibTorchSharp.dir/THSTensorMath.cpp.o
+  [ 87%] Building CXX object LibTorchSharp/CMakeFiles/LibTorchSharp.dir/THSTorch.cpp.o
+  [ 91%] Building CXX object LibTorchSharp/CMakeFiles/LibTorchSharp.dir/THSVision.cpp.o
+  [ 95%] Building CXX object LibTorchSharp/CMakeFiles/LibTorchSharp.dir/Utils.cpp.o
+  [100%] Linking CXX shared library libLibTorchSharp.so
+  [100%] Built target LibTorchSharp
+  Install the project...
+  -- Install configuration: "Release"
+  -- Installing: /root/torchsharp-build/src/Native/../../bin/x64.Release/Native/./libLibTorchSharp.so
+  -- Set runtime path of "/root/torchsharp-build/src/Native/../../bin/x64.Release/Native/./libLibTorchSharp.so" to "$ORIGIN/:/lib/intel64:/lib/intel64_win:/lib/win-x64:/root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cpu/libtorch-cxx11-abi-shared-with-deps-2.5.1cpu/libtorch/lib"
+  TorchSharp -> /root/torchsharp-build/bin/AnyCPU.Release/TorchSharp/netstandard2.0/TorchSharp.dll
+  TorchSharp -> /root/torchsharp-build/bin/AnyCPU.Release/TorchSharp/net6.0/TorchSharp.dll
+  TorchAudio -> /root/torchsharp-build/bin/AnyCPU.Release/TorchAudio/netstandard2.0/TorchAudio.dll
+  TorchVision -> /root/torchsharp-build/bin/AnyCPU.Release/TorchVision/netstandard2.0/TorchVision.dll
+  TorchAudio -> /root/torchsharp-build/bin/AnyCPU.Release/TorchAudio/net6.0/TorchAudio.dll
+  TorchVision -> /root/torchsharp-build/bin/AnyCPU.Release/TorchVision/net6.0/TorchVision.dll
+  Examples.Utils -> /root/torchsharp-build/bin/AnyCPU.Release/Examples.Utils/net6.0/Examples.Utils.dll
+  Examples -> /root/torchsharp-build/bin/AnyCPU.Release/Examples/net6.0/Examples.dll
+  TorchSharpTest.WithCudaBinaries -> /root/torchsharp-build/bin/AnyCPU.Release/TorchSharpTest.WithCudaBinaries/net6.0/TorchSharpTest.WithCudaBinaries.dll
+  TorchSharpTest -> /root/torchsharp-build/bin/AnyCPU.Release/TorchSharpTest/net6.0/TorchSharpTest.dll
+  FSharp.Examples -> /root/torchsharp-build/bin/AnyCPU.Release/FSharp.Examples/net6.0/FSharp.Examples.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:03:43.35
+[0;32m[SUCCESS][0m Main solution build completed
+[0;34m[INFO][0m Building NuGet packages...
+[0;34m[INFO][0m Building with libtorch CUDA packages (this may take a while and use significant disk space)...
+[0;34m[INFO][0m Verifying CUDA 12.8 libtorch binaries exist...
+[0;34m[INFO][0m Found 14 CUDA 12.8 library files, total size: 5.6G
+[0;34m[INFO][0m Creating custom pack project for CUDA 12.8 packages...
+[0;34m[INFO][0m Building CUDA 12.8 packages using custom pack project...
+MSBuild version 17.11.31+933b72e36 for .NET
+Build started 05/26/2025 17:13:30.
+     1>Project "/root/torchsharp-build/pkg/cuda128-pack.proj" on node 1 (default targets).
+     1>Restore:
+         Restoring CUDA 12.8 packaging projects...
+     1>Project "/root/torchsharp-build/pkg/cuda128-pack.proj" (1) is building "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part1/libtorch-cuda-12.8-linux-x64-part1.nupkgproj" (2) on node 1 (Restore target(s)).
+     2>_GetAllRestoreProjectPathItems:
+         Determining projects to restore...
+       Restore:
+         X.509 certificate chain validation will use the fallback certificate bundle at '/usr/share/dotnet/sdk/8.0.410/trustedroots/codesignctl.pem'.
+         X.509 certificate chain validation will use the fallback certificate bundle at '/usr/share/dotnet/sdk/8.0.410/trustedroots/timestampctl.pem'.
+         Restoring packages for /root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part1/libtorch-cuda-12.8-linux-x64-part1.nupkgproj...
+           CACHE https://api.nuget.org/v3/vulnerabilities/index.json
+           CACHE https://api.nuget.org/v3-vulnerabilities/2025.05.23.23.37.46/vulnerability.base.json
+           CACHE https://api.nuget.org/v3-vulnerabilities/2025.05.23.23.37.46/2025.05.26.05.37.51/vulnerability.update.json
+         Generating MSBuild file /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part1.NupkgProj/libtorch-cuda-12.8-linux-x64-part1.nupkgproj.nuget.g.props.
+         Generating MSBuild file /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part1.NupkgProj/libtorch-cuda-12.8-linux-x64-part1.nupkgproj.nuget.g.targets.
+         Writing assets file to disk. Path: /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part1.NupkgProj/project.assets.json
+         Restored /root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part1/libtorch-cuda-12.8-linux-x64-part1.nupkgproj (in 106 ms).
+         
+         NuGet Config files used:
+             /root/.nuget/NuGet/NuGet.Config
+         
+         Feeds used:
+             https://api.nuget.org/v3/index.json
+     2>Done Building Project "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part1/libtorch-cuda-12.8-linux-x64-part1.nupkgproj" (Restore target(s)).
+     1>Project "/root/torchsharp-build/pkg/cuda128-pack.proj" (1) is building "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part2-primary/libtorch-cuda-12.8-linux-x64-part2-primary.nupkgproj" (3) on node 1 (Restore target(s)).
+     3>_GetAllRestoreProjectPathItems:
+         Determining projects to restore...
+       Restore:
+         Restoring packages for /root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part2-primary/libtorch-cuda-12.8-linux-x64-part2-primary.nupkgproj...
+           CACHE https://api.nuget.org/v3/vulnerabilities/index.json
+           CACHE https://api.nuget.org/v3-vulnerabilities/2025.05.23.23.37.46/vulnerability.base.json
+           CACHE https://api.nuget.org/v3-vulnerabilities/2025.05.23.23.37.46/2025.05.26.05.37.51/vulnerability.update.json
+         Generating MSBuild file /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part2-primary.NupkgProj/libtorch-cuda-12.8-linux-x64-part2-primary.nupkgproj.nuget.g.props.
+         Generating MSBuild file /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part2-primary.NupkgProj/libtorch-cuda-12.8-linux-x64-part2-primary.nupkgproj.nuget.g.targets.
+         Writing assets file to disk. Path: /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part2-primary.NupkgProj/project.assets.json
+         Restored /root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part2-primary/libtorch-cuda-12.8-linux-x64-part2-primary.nupkgproj (in 18 ms).
+         
+         NuGet Config files used:
+             /root/.nuget/NuGet/NuGet.Config
+         
+         Feeds used:
+             https://api.nuget.org/v3/index.json
+     3>Done Building Project "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part2-primary/libtorch-cuda-12.8-linux-x64-part2-primary.nupkgproj" (Restore target(s)).
+     1>Project "/root/torchsharp-build/pkg/cuda128-pack.proj" (1) is building "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part3-primary/libtorch-cuda-12.8-linux-x64-part3-primary.nupkgproj" (4) on node 1 (Restore target(s)).
+     4>_GetAllRestoreProjectPathItems:
+         Determining projects to restore...
+       Restore:
+         Restoring packages for /root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part3-primary/libtorch-cuda-12.8-linux-x64-part3-primary.nupkgproj...
+           CACHE https://api.nuget.org/v3/vulnerabilities/index.json
+           CACHE https://api.nuget.org/v3-vulnerabilities/2025.05.23.23.37.46/vulnerability.base.json
+           CACHE https://api.nuget.org/v3-vulnerabilities/2025.05.23.23.37.46/2025.05.26.05.37.51/vulnerability.update.json
+         Generating MSBuild file /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part3-primary.NupkgProj/libtorch-cuda-12.8-linux-x64-part3-primary.nupkgproj.nuget.g.props.
+         Generating MSBuild file /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part3-primary.NupkgProj/libtorch-cuda-12.8-linux-x64-part3-primary.nupkgproj.nuget.g.targets.
+         Writing assets file to disk. Path: /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part3-primary.NupkgProj/project.assets.json
+         Restored /root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part3-primary/libtorch-cuda-12.8-linux-x64-part3-primary.nupkgproj (in 7 ms).
+         
+         NuGet Config files used:
+             /root/.nuget/NuGet/NuGet.Config
+         
+         Feeds used:
+             https://api.nuget.org/v3/index.json
+     4>Done Building Project "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part3-primary/libtorch-cuda-12.8-linux-x64-part3-primary.nupkgproj" (Restore target(s)).
+     1>Project "/root/torchsharp-build/pkg/cuda128-pack.proj" (1) is building "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part4-primary/libtorch-cuda-12.8-linux-x64-part4-primary.nupkgproj" (5) on node 1 (Restore target(s)).
+     5>_GetAllRestoreProjectPathItems:
+         Determining projects to restore...
+       Restore:
+         Restoring packages for /root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part4-primary/libtorch-cuda-12.8-linux-x64-part4-primary.nupkgproj...
+           CACHE https://api.nuget.org/v3/vulnerabilities/index.json
+           CACHE https://api.nuget.org/v3-vulnerabilities/2025.05.23.23.37.46/vulnerability.base.json
+           CACHE https://api.nuget.org/v3-vulnerabilities/2025.05.23.23.37.46/2025.05.26.05.37.51/vulnerability.update.json
+         Generating MSBuild file /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part4-primary.NupkgProj/libtorch-cuda-12.8-linux-x64-part4-primary.nupkgproj.nuget.g.props.
+         Generating MSBuild file /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part4-primary.NupkgProj/libtorch-cuda-12.8-linux-x64-part4-primary.nupkgproj.nuget.g.targets.
+         Writing assets file to disk. Path: /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part4-primary.NupkgProj/project.assets.json
+         Restored /root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part4-primary/libtorch-cuda-12.8-linux-x64-part4-primary.nupkgproj (in 11 ms).
+         
+         NuGet Config files used:
+             /root/.nuget/NuGet/NuGet.Config
+         
+         Feeds used:
+             https://api.nuget.org/v3/index.json
+     5>Done Building Project "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part4-primary/libtorch-cuda-12.8-linux-x64-part4-primary.nupkgproj" (Restore target(s)).
+     1>Project "/root/torchsharp-build/pkg/cuda128-pack.proj" (1) is building "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part5-fragment1/libtorch-cuda-12.8-linux-x64-part5-fragment1.nupkgproj" (6) on node 1 (Restore target(s)).
+     6>_GetAllRestoreProjectPathItems:
+         Determining projects to restore...
+       Restore:
+         Restoring packages for /root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part5-fragment1/libtorch-cuda-12.8-linux-x64-part5-fragment1.nupkgproj...
+           CACHE https://api.nuget.org/v3/vulnerabilities/index.json
+           CACHE https://api.nuget.org/v3-vulnerabilities/2025.05.23.23.37.46/vulnerability.base.json
+           CACHE https://api.nuget.org/v3-vulnerabilities/2025.05.23.23.37.46/2025.05.26.05.37.51/vulnerability.update.json
+         Generating MSBuild file /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part5-fragment1.NupkgProj/libtorch-cuda-12.8-linux-x64-part5-fragment1.nupkgproj.nuget.g.props.
+         Generating MSBuild file /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part5-fragment1.NupkgProj/libtorch-cuda-12.8-linux-x64-part5-fragment1.nupkgproj.nuget.g.targets.
+         Writing assets file to disk. Path: /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part5-fragment1.NupkgProj/project.assets.json
+         Restored /root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part5-fragment1/libtorch-cuda-12.8-linux-x64-part5-fragment1.nupkgproj (in 7 ms).
+         
+         NuGet Config files used:
+             /root/.nuget/NuGet/NuGet.Config
+         
+         Feeds used:
+             https://api.nuget.org/v3/index.json
+     6>Done Building Project "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part5-fragment1/libtorch-cuda-12.8-linux-x64-part5-fragment1.nupkgproj" (Restore target(s)).
+     1>Project "/root/torchsharp-build/pkg/cuda128-pack.proj" (1) is building "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part5-primary/libtorch-cuda-12.8-linux-x64-part5-primary.nupkgproj" (7) on node 1 (Restore target(s)).
+     7>_GetAllRestoreProjectPathItems:
+         Determining projects to restore...
+       Restore:
+         Restoring packages for /root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part5-primary/libtorch-cuda-12.8-linux-x64-part5-primary.nupkgproj...
+           CACHE https://api.nuget.org/v3/vulnerabilities/index.json
+           CACHE https://api.nuget.org/v3-vulnerabilities/2025.05.23.23.37.46/vulnerability.base.json
+           CACHE https://api.nuget.org/v3-vulnerabilities/2025.05.23.23.37.46/2025.05.26.05.37.51/vulnerability.update.json
+         Generating MSBuild file /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part5-primary.NupkgProj/libtorch-cuda-12.8-linux-x64-part5-primary.nupkgproj.nuget.g.props.
+         Generating MSBuild file /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part5-primary.NupkgProj/libtorch-cuda-12.8-linux-x64-part5-primary.nupkgproj.nuget.g.targets.
+         Writing assets file to disk. Path: /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part5-primary.NupkgProj/project.assets.json
+         Restored /root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part5-primary/libtorch-cuda-12.8-linux-x64-part5-primary.nupkgproj (in 7 ms).
+         
+         NuGet Config files used:
+             /root/.nuget/NuGet/NuGet.Config
+         
+         Feeds used:
+             https://api.nuget.org/v3/index.json
+     7>Done Building Project "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part5-primary/libtorch-cuda-12.8-linux-x64-part5-primary.nupkgproj" (Restore target(s)).
+     1>Project "/root/torchsharp-build/pkg/cuda128-pack.proj" (1) is building "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part6-primary/libtorch-cuda-12.8-linux-x64-part6-primary.nupkgproj" (8) on node 1 (Restore target(s)).
+     8>_GetAllRestoreProjectPathItems:
+         Determining projects to restore...
+       Restore:
+         Restoring packages for /root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part6-primary/libtorch-cuda-12.8-linux-x64-part6-primary.nupkgproj...
+           CACHE https://api.nuget.org/v3/vulnerabilities/index.json
+           CACHE https://api.nuget.org/v3-vulnerabilities/2025.05.23.23.37.46/vulnerability.base.json
+           CACHE https://api.nuget.org/v3-vulnerabilities/2025.05.23.23.37.46/2025.05.26.05.37.51/vulnerability.update.json
+         Generating MSBuild file /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part6-primary.NupkgProj/libtorch-cuda-12.8-linux-x64-part6-primary.nupkgproj.nuget.g.props.
+         Generating MSBuild file /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part6-primary.NupkgProj/libtorch-cuda-12.8-linux-x64-part6-primary.nupkgproj.nuget.g.targets.
+         Writing assets file to disk. Path: /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part6-primary.NupkgProj/project.assets.json
+         Restored /root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part6-primary/libtorch-cuda-12.8-linux-x64-part6-primary.nupkgproj (in 12 ms).
+         
+         NuGet Config files used:
+             /root/.nuget/NuGet/NuGet.Config
+         
+         Feeds used:
+             https://api.nuget.org/v3/index.json
+     8>Done Building Project "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part6-primary/libtorch-cuda-12.8-linux-x64-part6-primary.nupkgproj" (Restore target(s)).
+     1>Project "/root/torchsharp-build/pkg/cuda128-pack.proj" (1) is building "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part7-primary/libtorch-cuda-12.8-linux-x64-part7-primary.nupkgproj" (9) on node 1 (Restore target(s)).
+     9>_GetAllRestoreProjectPathItems:
+         Determining projects to restore...
+       Restore:
+         Restoring packages for /root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part7-primary/libtorch-cuda-12.8-linux-x64-part7-primary.nupkgproj...
+           CACHE https://api.nuget.org/v3/vulnerabilities/index.json
+           CACHE https://api.nuget.org/v3-vulnerabilities/2025.05.23.23.37.46/vulnerability.base.json
+           CACHE https://api.nuget.org/v3-vulnerabilities/2025.05.23.23.37.46/2025.05.26.05.37.51/vulnerability.update.json
+         Generating MSBuild file /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part7-primary.NupkgProj/libtorch-cuda-12.8-linux-x64-part7-primary.nupkgproj.nuget.g.props.
+         Generating MSBuild file /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part7-primary.NupkgProj/libtorch-cuda-12.8-linux-x64-part7-primary.nupkgproj.nuget.g.targets.
+         Writing assets file to disk. Path: /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part7-primary.NupkgProj/project.assets.json
+         Restored /root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part7-primary/libtorch-cuda-12.8-linux-x64-part7-primary.nupkgproj (in 7 ms).
+         
+         NuGet Config files used:
+             /root/.nuget/NuGet/NuGet.Config
+         
+         Feeds used:
+             https://api.nuget.org/v3/index.json
+     9>Done Building Project "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part7-primary/libtorch-cuda-12.8-linux-x64-part7-primary.nupkgproj" (Restore target(s)).
+     1>Project "/root/torchsharp-build/pkg/cuda128-pack.proj" (1) is building "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part8-primary/libtorch-cuda-12.8-linux-x64-part8-primary.nupkgproj" (10) on node 1 (Restore target(s)).
+    10>_GetAllRestoreProjectPathItems:
+         Determining projects to restore...
+       Restore:
+         Restoring packages for /root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part8-primary/libtorch-cuda-12.8-linux-x64-part8-primary.nupkgproj...
+           CACHE https://api.nuget.org/v3/vulnerabilities/index.json
+           CACHE https://api.nuget.org/v3-vulnerabilities/2025.05.23.23.37.46/vulnerability.base.json
+           CACHE https://api.nuget.org/v3-vulnerabilities/2025.05.23.23.37.46/2025.05.26.05.37.51/vulnerability.update.json
+         Generating MSBuild file /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part8-primary.NupkgProj/libtorch-cuda-12.8-linux-x64-part8-primary.nupkgproj.nuget.g.props.
+         Generating MSBuild file /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part8-primary.NupkgProj/libtorch-cuda-12.8-linux-x64-part8-primary.nupkgproj.nuget.g.targets.
+         Writing assets file to disk. Path: /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part8-primary.NupkgProj/project.assets.json
+         Restored /root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part8-primary/libtorch-cuda-12.8-linux-x64-part8-primary.nupkgproj (in 7 ms).
+         
+         NuGet Config files used:
+             /root/.nuget/NuGet/NuGet.Config
+         
+         Feeds used:
+             https://api.nuget.org/v3/index.json
+    10>Done Building Project "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part8-primary/libtorch-cuda-12.8-linux-x64-part8-primary.nupkgproj" (Restore target(s)).
+     1>Project "/root/torchsharp-build/pkg/cuda128-pack.proj" (1) is building "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64/libtorch-cuda-12.8-linux-x64.nupkgproj" (11) on node 1 (Restore target(s)).
+    11>_GetAllRestoreProjectPathItems:
+         Determining projects to restore...
+       Restore:
+         Restoring packages for /root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64/libtorch-cuda-12.8-linux-x64.nupkgproj...
+         Assets file has not changed. Skipping assets file writing. Path: /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part5-primary.NupkgProj/project.assets.json
+         Assets file has not changed. Skipping assets file writing. Path: /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part7-primary.NupkgProj/project.assets.json
+         Assets file has not changed. Skipping assets file writing. Path: /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part5-fragment1.NupkgProj/project.assets.json
+         Assets file has not changed. Skipping assets file writing. Path: /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part6-primary.NupkgProj/project.assets.json
+         Assets file has not changed. Skipping assets file writing. Path: /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part8-primary.NupkgProj/project.assets.json
+         Assets file has not changed. Skipping assets file writing. Path: /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part2-primary.NupkgProj/project.assets.json
+         Assets file has not changed. Skipping assets file writing. Path: /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part1.NupkgProj/project.assets.json
+         Assets file has not changed. Skipping assets file writing. Path: /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part4-primary.NupkgProj/project.assets.json
+         Restored /root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part2-primary/libtorch-cuda-12.8-linux-x64-part2-primary.nupkgproj (in 1 ms).
+         Restored /root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part6-primary/libtorch-cuda-12.8-linux-x64-part6-primary.nupkgproj (in 1 ms).
+         Restored /root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part4-primary/libtorch-cuda-12.8-linux-x64-part4-primary.nupkgproj (in 1 ms).
+         Restored /root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part5-fragment1/libtorch-cuda-12.8-linux-x64-part5-fragment1.nupkgproj (in 1 ms).
+         Restored /root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part5-primary/libtorch-cuda-12.8-linux-x64-part5-primary.nupkgproj (in 1 ms).
+         Restored /root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part1/libtorch-cuda-12.8-linux-x64-part1.nupkgproj (in 1 ms).
+         Restored /root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part7-primary/libtorch-cuda-12.8-linux-x64-part7-primary.nupkgproj (in 1 ms).
+         Restored /root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part8-primary/libtorch-cuda-12.8-linux-x64-part8-primary.nupkgproj (in 1 ms).
+         Assets file has not changed. Skipping assets file writing. Path: /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part3-primary.NupkgProj/project.assets.json
+         Restored /root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part3-primary/libtorch-cuda-12.8-linux-x64-part3-primary.nupkgproj (in 1 ms).
+           CACHE https://api.nuget.org/v3/vulnerabilities/index.json
+           CACHE https://api.nuget.org/v3-vulnerabilities/2025.05.23.23.37.46/vulnerability.base.json
+           CACHE https://api.nuget.org/v3-vulnerabilities/2025.05.23.23.37.46/2025.05.26.05.37.51/vulnerability.update.json
+         Generating MSBuild file /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64.NupkgProj/libtorch-cuda-12.8-linux-x64.nupkgproj.nuget.g.props.
+         Generating MSBuild file /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64.NupkgProj/libtorch-cuda-12.8-linux-x64.nupkgproj.nuget.g.targets.
+         Writing assets file to disk. Path: /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64.NupkgProj/project.assets.json
+         Restored /root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64/libtorch-cuda-12.8-linux-x64.nupkgproj (in 17 ms).
+         
+         NuGet Config files used:
+             /root/.nuget/NuGet/NuGet.Config
+         
+         Feeds used:
+             https://api.nuget.org/v3/index.json
+         9 of 10 projects are up-to-date for restore.
+    11>Done Building Project "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64/libtorch-cuda-12.8-linux-x64.nupkgproj" (Restore target(s)).
+     1>Project "/root/torchsharp-build/pkg/cuda128-pack.proj" (1) is building "/root/torchsharp-build/pkg/TorchSharp-cuda-12.8-linux/TorchSharp-cuda-12.8-linux.nupkgproj" (12) on node 1 (Restore target(s)).
+    12>_GetAllRestoreProjectPathItems:
+         Determining projects to restore...
+       Restore:
+         Assets file has not changed. Skipping assets file writing. Path: /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part4-primary.NupkgProj/project.assets.json
+         Assets file has not changed. Skipping assets file writing. Path: /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part2-primary.NupkgProj/project.assets.json
+         Assets file has not changed. Skipping assets file writing. Path: /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part6-primary.NupkgProj/project.assets.json
+         Assets file has not changed. Skipping assets file writing. Path: /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part3-primary.NupkgProj/project.assets.json
+         Assets file has not changed. Skipping assets file writing. Path: /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part7-primary.NupkgProj/project.assets.json
+         Assets file has not changed. Skipping assets file writing. Path: /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part5-primary.NupkgProj/project.assets.json
+         Assets file has not changed. Skipping assets file writing. Path: /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part5-fragment1.NupkgProj/project.assets.json
+         Restored /root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part3-primary/libtorch-cuda-12.8-linux-x64-part3-primary.nupkgproj (in 0.2 ms).
+         Restored /root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part5-fragment1/libtorch-cuda-12.8-linux-x64-part5-fragment1.nupkgproj (in 0.3 ms).
+         Restored /root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part2-primary/libtorch-cuda-12.8-linux-x64-part2-primary.nupkgproj (in 0.4 ms).
+         Restored /root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part6-primary/libtorch-cuda-12.8-linux-x64-part6-primary.nupkgproj (in 0.3 ms).
+         Restored /root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part7-primary/libtorch-cuda-12.8-linux-x64-part7-primary.nupkgproj (in 0.2 ms).
+         Restored /root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part4-primary/libtorch-cuda-12.8-linux-x64-part4-primary.nupkgproj (in 0.3 ms).
+         Restored /root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part5-primary/libtorch-cuda-12.8-linux-x64-part5-primary.nupkgproj (in 0.3 ms).
+         Assets file has not changed. Skipping assets file writing. Path: /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64.NupkgProj/project.assets.json
+         Restored /root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64/libtorch-cuda-12.8-linux-x64.nupkgproj (in 0.5 ms).
+         Assets file has not changed. Skipping assets file writing. Path: /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part8-primary.NupkgProj/project.assets.json
+         Restored /root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part8-primary/libtorch-cuda-12.8-linux-x64-part8-primary.nupkgproj (in 0.2 ms).
+         Assets file has not changed. Skipping assets file writing. Path: /root/torchsharp-build/bin/obj/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part1.NupkgProj/project.assets.json
+         Restored /root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part1/libtorch-cuda-12.8-linux-x64-part1.nupkgproj (in 0.2 ms).
+         Restoring packages for /root/torchsharp-build/pkg/TorchSharp/TorchSharp.nupkgproj...
+         Restoring packages for /root/torchsharp-build/pkg/TorchSharp-cuda-12.8-linux/TorchSharp-cuda-12.8-linux.nupkgproj...
+           CACHE https://api.nuget.org/v3/vulnerabilities/index.json
+           CACHE https://api.nuget.org/v3-vulnerabilities/2025.05.23.23.37.46/vulnerability.base.json
+           CACHE https://api.nuget.org/v3-vulnerabilities/2025.05.23.23.37.46/2025.05.26.05.37.51/vulnerability.update.json
+         Generating MSBuild file /root/torchsharp-build/bin/obj/AnyCPU.Release/TorchSharp-cuda-12.8-linux.NupkgProj/TorchSharp-cuda-12.8-linux.nupkgproj.nuget.g.props.
+         Generating MSBuild file /root/torchsharp-build/bin/obj/AnyCPU.Release/TorchSharp-cuda-12.8-linux.NupkgProj/TorchSharp-cuda-12.8-linux.nupkgproj.nuget.g.targets.
+         Writing assets file to disk. Path: /root/torchsharp-build/bin/obj/AnyCPU.Release/TorchSharp-cuda-12.8-linux.NupkgProj/project.assets.json
+         Restored /root/torchsharp-build/pkg/TorchSharp-cuda-12.8-linux/TorchSharp-cuda-12.8-linux.nupkgproj (in 16 ms).
+           GET https://api.nuget.org/v3-flatcontainer/torchsharp/index.json
+           OK https://api.nuget.org/v3-flatcontainer/torchsharp/index.json 228ms
+           GET https://api.nuget.org/v3-flatcontainer/torchsharp/0.105.0/torchsharp.0.105.0.nupkg
+           OK https://api.nuget.org/v3-flatcontainer/torchsharp/0.105.0/torchsharp.0.105.0.nupkg 62ms
+         Installed TorchSharp 0.105.0 from https://api.nuget.org/v3/index.json to /root/.nuget/packages/torchsharp/0.105.0 with content hash PC3QZ+Y79LXOmSBFNk5YK6iNR5B0rmgEgc0njPocKgI50FLCHZAxz4gRQfzXeB6ffRcxz/FStjWi7Pxo+zVnhA==.
+         Generating MSBuild file /root/torchsharp-build/bin/obj/AnyCPU.Release/TorchSharp.NupkgProj/TorchSharp.nupkgproj.nuget.g.props.
+         Generating MSBuild file /root/torchsharp-build/bin/obj/AnyCPU.Release/TorchSharp.NupkgProj/TorchSharp.nupkgproj.nuget.g.targets.
+         Writing assets file to disk. Path: /root/torchsharp-build/bin/obj/AnyCPU.Release/TorchSharp.NupkgProj/project.assets.json
+         Restored /root/torchsharp-build/pkg/TorchSharp/TorchSharp.nupkgproj (in 671 ms).
+         
+         NuGet Config files used:
+             /root/.nuget/NuGet/NuGet.Config
+         
+         Feeds used:
+             https://api.nuget.org/v3/index.json
+         10 of 12 projects are up-to-date for restore.
+    12>Done Building Project "/root/torchsharp-build/pkg/TorchSharp-cuda-12.8-linux/TorchSharp-cuda-12.8-linux.nupkgproj" (Restore target(s)).
+     1>Project "/root/torchsharp-build/pkg/cuda128-pack.proj" (1) is building "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part1/libtorch-cuda-12.8-linux-x64-part1.nupkgproj" (2:14) on node 1 (Pack target(s)).
+  2:14>Project "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part1/libtorch-cuda-12.8-linux-x64-part1.nupkgproj" (2:14) is building "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part1/libtorch-cuda-12.8-linux-x64-part1.nupkgproj" (2:16) on node 1 (_GetFrameworkAssemblyReferences target(s)).
+     2>PrepareForBuild:
+         Creating directory "/root/torchsharp-build/bin/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part1/netstandard2.0/".
+     2>Done Building Project "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part1/libtorch-cuda-12.8-linux-x64-part1.nupkgproj" (_GetFrameworkAssemblyReferences target(s)).
+     2>GenerateNuspec:
+         The package libtorch-cuda-12.8-linux-x64-part1.2.7.0 is missing a readme. Go to https://aka.ms/nuget/authoring-best-practices/readme to learn why package readmes are important.
+         Successfully created package '/root/torchsharp-build/bin/packages/Release/libtorch-cuda-12.8-linux-x64-part1.2.7.0.nupkg'.
+     2>Done Building Project "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part1/libtorch-cuda-12.8-linux-x64-part1.nupkgproj" (Pack target(s)).
+     1>Project "/root/torchsharp-build/pkg/cuda128-pack.proj" (1) is building "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part2-primary/libtorch-cuda-12.8-linux-x64-part2-primary.nupkgproj" (3:14) on node 1 (Pack target(s)).
+  3:14>Project "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part2-primary/libtorch-cuda-12.8-linux-x64-part2-primary.nupkgproj" (3:14) is building "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part2-primary/libtorch-cuda-12.8-linux-x64-part2-primary.nupkgproj" (3:16) on node 1 (_GetFrameworkAssemblyReferences target(s)).
+     3>PrepareForBuild:
+         Creating directory "/root/torchsharp-build/bin/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part2-primary/netstandard2.0/".
+     3>Done Building Project "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part2-primary/libtorch-cuda-12.8-linux-x64-part2-primary.nupkgproj" (_GetFrameworkAssemblyReferences target(s)).
+     3>GenerateNuspec:
+         The package libtorch-cuda-12.8-linux-x64-part2-primary.2.7.0 is missing a readme. Go to https://aka.ms/nuget/authoring-best-practices/readme to learn why package readmes are important.
+         Successfully created package '/root/torchsharp-build/bin/packages/Release/libtorch-cuda-12.8-linux-x64-part2-primary.2.7.0.nupkg'.
+     3>Done Building Project "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part2-primary/libtorch-cuda-12.8-linux-x64-part2-primary.nupkgproj" (Pack target(s)).
+     1>Project "/root/torchsharp-build/pkg/cuda128-pack.proj" (1) is building "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part3-primary/libtorch-cuda-12.8-linux-x64-part3-primary.nupkgproj" (4:14) on node 1 (Pack target(s)).
+  4:14>Project "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part3-primary/libtorch-cuda-12.8-linux-x64-part3-primary.nupkgproj" (4:14) is building "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part3-primary/libtorch-cuda-12.8-linux-x64-part3-primary.nupkgproj" (4:16) on node 1 (_GetFrameworkAssemblyReferences target(s)).
+     4>PrepareForBuild:
+         Creating directory "/root/torchsharp-build/bin/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part3-primary/netstandard2.0/".
+     4>Done Building Project "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part3-primary/libtorch-cuda-12.8-linux-x64-part3-primary.nupkgproj" (_GetFrameworkAssemblyReferences target(s)).
+     4>GenerateNuspec:
+         The package libtorch-cuda-12.8-linux-x64-part3-primary.2.7.0 is missing a readme. Go to https://aka.ms/nuget/authoring-best-practices/readme to learn why package readmes are important.
+         Successfully created package '/root/torchsharp-build/bin/packages/Release/libtorch-cuda-12.8-linux-x64-part3-primary.2.7.0.nupkg'.
+     4>Done Building Project "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part3-primary/libtorch-cuda-12.8-linux-x64-part3-primary.nupkgproj" (Pack target(s)).
+     1>Project "/root/torchsharp-build/pkg/cuda128-pack.proj" (1) is building "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part4-primary/libtorch-cuda-12.8-linux-x64-part4-primary.nupkgproj" (5:14) on node 1 (Pack target(s)).
+  5:14>Project "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part4-primary/libtorch-cuda-12.8-linux-x64-part4-primary.nupkgproj" (5:14) is building "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part4-primary/libtorch-cuda-12.8-linux-x64-part4-primary.nupkgproj" (5:16) on node 1 (_GetFrameworkAssemblyReferences target(s)).
+     5>PrepareForBuild:
+         Creating directory "/root/torchsharp-build/bin/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part4-primary/netstandard2.0/".
+     5>Done Building Project "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part4-primary/libtorch-cuda-12.8-linux-x64-part4-primary.nupkgproj" (_GetFrameworkAssemblyReferences target(s)).
+     5>GenerateNuspec:
+         The package libtorch-cuda-12.8-linux-x64-part4-primary.2.7.0 is missing a readme. Go to https://aka.ms/nuget/authoring-best-practices/readme to learn why package readmes are important.
+         Successfully created package '/root/torchsharp-build/bin/packages/Release/libtorch-cuda-12.8-linux-x64-part4-primary.2.7.0.nupkg'.
+     5>Done Building Project "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part4-primary/libtorch-cuda-12.8-linux-x64-part4-primary.nupkgproj" (Pack target(s)).
+     1>Project "/root/torchsharp-build/pkg/cuda128-pack.proj" (1) is building "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part5-fragment1/libtorch-cuda-12.8-linux-x64-part5-fragment1.nupkgproj" (6:14) on node 1 (Pack target(s)).
+  6:14>Project "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part5-fragment1/libtorch-cuda-12.8-linux-x64-part5-fragment1.nupkgproj" (6:14) is building "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part5-fragment1/libtorch-cuda-12.8-linux-x64-part5-fragment1.nupkgproj" (6:16) on node 1 (_GetFrameworkAssemblyReferences target(s)).
+     6>PrepareForBuild:
+         Creating directory "/root/torchsharp-build/bin/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part5-fragment1/netstandard2.0/".
+     6>Done Building Project "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part5-fragment1/libtorch-cuda-12.8-linux-x64-part5-fragment1.nupkgproj" (_GetFrameworkAssemblyReferences target(s)).
+     6>GenerateNuspec:
+         The package libtorch-cuda-12.8-linux-x64-part5-fragment1.2.7.0 is missing a readme. Go to https://aka.ms/nuget/authoring-best-practices/readme to learn why package readmes are important.
+         Successfully created package '/root/torchsharp-build/bin/packages/Release/libtorch-cuda-12.8-linux-x64-part5-fragment1.2.7.0.nupkg'.
+     6>Done Building Project "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part5-fragment1/libtorch-cuda-12.8-linux-x64-part5-fragment1.nupkgproj" (Pack target(s)).
+     1>Project "/root/torchsharp-build/pkg/cuda128-pack.proj" (1) is building "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part5-primary/libtorch-cuda-12.8-linux-x64-part5-primary.nupkgproj" (7:14) on node 1 (Pack target(s)).
+  7:14>Project "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part5-primary/libtorch-cuda-12.8-linux-x64-part5-primary.nupkgproj" (7:14) is building "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part5-primary/libtorch-cuda-12.8-linux-x64-part5-primary.nupkgproj" (7:16) on node 1 (_GetFrameworkAssemblyReferences target(s)).
+     7>PrepareForBuild:
+         Creating directory "/root/torchsharp-build/bin/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part5-primary/netstandard2.0/".
+     7>Done Building Project "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part5-primary/libtorch-cuda-12.8-linux-x64-part5-primary.nupkgproj" (_GetFrameworkAssemblyReferences target(s)).
+     7>GenerateNuspec:
+         The package libtorch-cuda-12.8-linux-x64-part5-primary.2.7.0 is missing a readme. Go to https://aka.ms/nuget/authoring-best-practices/readme to learn why package readmes are important.
+         Successfully created package '/root/torchsharp-build/bin/packages/Release/libtorch-cuda-12.8-linux-x64-part5-primary.2.7.0.nupkg'.
+     7>Done Building Project "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part5-primary/libtorch-cuda-12.8-linux-x64-part5-primary.nupkgproj" (Pack target(s)).
+     1>Project "/root/torchsharp-build/pkg/cuda128-pack.proj" (1) is building "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part6-primary/libtorch-cuda-12.8-linux-x64-part6-primary.nupkgproj" (8:14) on node 1 (Pack target(s)).
+  8:14>Project "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part6-primary/libtorch-cuda-12.8-linux-x64-part6-primary.nupkgproj" (8:14) is building "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part6-primary/libtorch-cuda-12.8-linux-x64-part6-primary.nupkgproj" (8:16) on node 1 (_GetFrameworkAssemblyReferences target(s)).
+     8>PrepareForBuild:
+         Creating directory "/root/torchsharp-build/bin/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part6-primary/netstandard2.0/".
+     8>Done Building Project "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part6-primary/libtorch-cuda-12.8-linux-x64-part6-primary.nupkgproj" (_GetFrameworkAssemblyReferences target(s)).
+     8>GenerateNuspec:
+         The package libtorch-cuda-12.8-linux-x64-part6-primary.2.7.0 is missing a readme. Go to https://aka.ms/nuget/authoring-best-practices/readme to learn why package readmes are important.
+         Successfully created package '/root/torchsharp-build/bin/packages/Release/libtorch-cuda-12.8-linux-x64-part6-primary.2.7.0.nupkg'.
+     8>Done Building Project "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part6-primary/libtorch-cuda-12.8-linux-x64-part6-primary.nupkgproj" (Pack target(s)).
+     1>Project "/root/torchsharp-build/pkg/cuda128-pack.proj" (1) is building "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part7-primary/libtorch-cuda-12.8-linux-x64-part7-primary.nupkgproj" (9:14) on node 1 (Pack target(s)).
+  9:14>Project "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part7-primary/libtorch-cuda-12.8-linux-x64-part7-primary.nupkgproj" (9:14) is building "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part7-primary/libtorch-cuda-12.8-linux-x64-part7-primary.nupkgproj" (9:16) on node 1 (_GetFrameworkAssemblyReferences target(s)).
+     9>PrepareForBuild:
+         Creating directory "/root/torchsharp-build/bin/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part7-primary/netstandard2.0/".
+     9>Done Building Project "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part7-primary/libtorch-cuda-12.8-linux-x64-part7-primary.nupkgproj" (_GetFrameworkAssemblyReferences target(s)).
+     9>GenerateNuspec:
+         The package libtorch-cuda-12.8-linux-x64-part7-primary.2.7.0 is missing a readme. Go to https://aka.ms/nuget/authoring-best-practices/readme to learn why package readmes are important.
+         Successfully created package '/root/torchsharp-build/bin/packages/Release/libtorch-cuda-12.8-linux-x64-part7-primary.2.7.0.nupkg'.
+     9>Done Building Project "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part7-primary/libtorch-cuda-12.8-linux-x64-part7-primary.nupkgproj" (Pack target(s)).
+     1>Project "/root/torchsharp-build/pkg/cuda128-pack.proj" (1) is building "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part8-primary/libtorch-cuda-12.8-linux-x64-part8-primary.nupkgproj" (10:14) on node 1 (Pack target(s)).
+ 10:14>Project "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part8-primary/libtorch-cuda-12.8-linux-x64-part8-primary.nupkgproj" (10:14) is building "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part8-primary/libtorch-cuda-12.8-linux-x64-part8-primary.nupkgproj" (10:16) on node 1 (_GetFrameworkAssemblyReferences target(s)).
+    10>PrepareForBuild:
+         Creating directory "/root/torchsharp-build/bin/AnyCPU.Release/libtorch-cuda-12.8-linux-x64-part8-primary/netstandard2.0/".
+    10>Done Building Project "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part8-primary/libtorch-cuda-12.8-linux-x64-part8-primary.nupkgproj" (_GetFrameworkAssemblyReferences target(s)).
+    10>GenerateNuspec:
+         The package libtorch-cuda-12.8-linux-x64-part8-primary.2.7.0 is missing a readme. Go to https://aka.ms/nuget/authoring-best-practices/readme to learn why package readmes are important.
+         Successfully created package '/root/torchsharp-build/bin/packages/Release/libtorch-cuda-12.8-linux-x64-part8-primary.2.7.0.nupkg'.
+    10>Done Building Project "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64-part8-primary/libtorch-cuda-12.8-linux-x64-part8-primary.nupkgproj" (Pack target(s)).
+     1>Project "/root/torchsharp-build/pkg/cuda128-pack.proj" (1) is building "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64/libtorch-cuda-12.8-linux-x64.nupkgproj" (11:11) on node 1 (Pack target(s)).
+ 11:11>Project "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64/libtorch-cuda-12.8-linux-x64.nupkgproj" (11:11) is building "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64/libtorch-cuda-12.8-linux-x64.nupkgproj" (11:13) on node 1 (_GetFrameworkAssemblyReferences target(s)).
+    11>PrepareForBuild:
+         Creating directory "/root/torchsharp-build/bin/AnyCPU.Release/libtorch-cuda-12.8-linux-x64/netstandard2.0/".
+    11>Done Building Project "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64/libtorch-cuda-12.8-linux-x64.nupkgproj" (_GetFrameworkAssemblyReferences target(s)).
+    11>GenerateNuspec:
+         The package libtorch-cuda-12.8-linux-x64.2.7.0 is missing a readme. Go to https://aka.ms/nuget/authoring-best-practices/readme to learn why package readmes are important.
+         Successfully created package '/root/torchsharp-build/bin/packages/Release/libtorch-cuda-12.8-linux-x64.2.7.0.nupkg'.
+    11>Done Building Project "/root/torchsharp-build/pkg/libtorch-cuda-12.8-linux-x64/libtorch-cuda-12.8-linux-x64.nupkgproj" (Pack target(s)).
+     1>Project "/root/torchsharp-build/pkg/cuda128-pack.proj" (1) is building "/root/torchsharp-build/pkg/TorchSharp-cuda-12.8-linux/TorchSharp-cuda-12.8-linux.nupkgproj" (12:7) on node 1 (Pack target(s)).
+  12:7>Project "/root/torchsharp-build/pkg/TorchSharp-cuda-12.8-linux/TorchSharp-cuda-12.8-linux.nupkgproj" (12:7) is building "/root/torchsharp-build/pkg/TorchSharp-cuda-12.8-linux/TorchSharp-cuda-12.8-linux.nupkgproj" (12:9) on node 3 (_GetFrameworkAssemblyReferences target(s)).
+    12>PrepareForBuild:
+         Creating directory "/root/torchsharp-build/bin/AnyCPU.Release/TorchSharp-cuda-12.8-linux/net6.0/".
+         Creating directory "/root/torchsharp-build/bin/obj/AnyCPU.Release/TorchSharp-cuda-12.8-linux.NupkgProj/net6.0/refint/".
+         Creating directory "/root/torchsharp-build/bin/obj/AnyCPU.Release/TorchSharp-cuda-12.8-linux.NupkgProj/net6.0/ref".
+    12>Done Building Project "/root/torchsharp-build/pkg/TorchSharp-cuda-12.8-linux/TorchSharp-cuda-12.8-linux.nupkgproj" (_GetFrameworkAssemblyReferences target(s)).
+    12>/usr/share/dotnet/sdk/8.0.410/Sdks/NuGet.Build.Tasks.Pack/build/NuGet.Build.Tasks.Pack.targets(221,5): error NU5033: Invalid metadata. Cannot specify both a PackageLicenseExpression and a PackageLicenseFile. [/root/torchsharp-build/pkg/TorchSharp-cuda-12.8-linux/TorchSharp-cuda-12.8-linux.nupkgproj]
+    12>Done Building Project "/root/torchsharp-build/pkg/TorchSharp-cuda-12.8-linux/TorchSharp-cuda-12.8-linux.nupkgproj" (Pack target(s)) -- FAILED.
+     1>Done Building Project "/root/torchsharp-build/pkg/cuda128-pack.proj" (default targets) -- FAILED.
+
+Build FAILED.
+
+       "/root/torchsharp-build/pkg/cuda128-pack.proj" (default target) (1) ->
+       "/root/torchsharp-build/pkg/TorchSharp-cuda-12.8-linux/TorchSharp-cuda-12.8-linux.nupkgproj" (Pack target) (12:7) ->
+       (GenerateNuspec target) -> 
+         /usr/share/dotnet/sdk/8.0.410/Sdks/NuGet.Build.Tasks.Pack/build/NuGet.Build.Tasks.Pack.targets(221,5): error NU5033: Invalid metadata. Cannot specify both a PackageLicenseExpression and a PackageLicenseFile. [/root/torchsharp-build/pkg/TorchSharp-cuda-12.8-linux/TorchSharp-cuda-12.8-linux.nupkgproj]
+
+    0 Warning(s)
+    1 Error(s)
+
+Time Elapsed 00:09:35.29
+[0;31m[ERROR][0m CUDA 12.8 package build failed
